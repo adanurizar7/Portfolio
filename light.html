@@ -1,1 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Adan Urizar — Analytics &amp; Consulting</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#f7f6f3;
+    --panel:#ffffff;
+    --panel-2:#f0efec;
+    --steel:#9aa0a8;
+    --paper:#1b2230;
+    --paper-dim:#5a6472;
+    --amber:#c9791e;
+    --teal:#0f766e;
+    --line: rgba(27,34,48,0.12);
+    --radius: 3px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--ink);
+    color:var(--paper);
+    font-family:'Inter',sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.display{
+    font-family:'Oswald',sans-serif;
+    text-transform:uppercase;
+    letter-spacing:0.02em;
+    margin:0;
+  }
+  .mono{
+    font-family:'IBM Plex Mono',monospace;
+    letter-spacing:0.03em;
+  }
+  a{color:inherit;}
+  .wrap{
+    max-width:1080px;
+    margin:0 auto;
+    padding:0 32px;
+  }
+  section{padding:96px 0;}
+  @media (max-width:640px){
+    section{padding:64px 0;}
+    .wrap{padding:0 20px;}
+  }
 
+  /* NAV */
+  nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(247,246,243,0.9);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{
+    display:flex; justify-content:space-between; align-items:center;
+    padding-top:18px; padding-bottom:18px;
+  }
+  nav .brand{font-family:'Oswald',sans-serif; font-weight:600; font-size:18px; letter-spacing:0.05em;}
+  nav .brand span{color:var(--amber);}
+  nav ul{list-style:none; display:flex; gap:28px; margin:0; padding:0;}
+  nav a{
+    font-size:13px; text-transform:uppercase; letter-spacing:0.08em;
+    color:var(--paper-dim); text-decoration:none; transition:color .2s;
+  }
+  nav a:hover{color:var(--amber);}
+  @media (max-width:640px){ nav ul{gap:14px;} nav a{font-size:11px;} }
+
+  /* HERO */
+  .hero{
+    padding-top:88px; padding-bottom:72px;
+    border-bottom:1px solid var(--line);
+  }
+  .eyebrow{
+    font-size:12px; color:var(--amber); text-transform:uppercase;
+    letter-spacing:0.18em; margin-bottom:18px; display:block;
+  }
+  .hero h1{
+    font-size:clamp(38px,6vw,64px);
+    line-height:1.05;
+    max-width:780px;
+  }
+  .hero h1 em{ font-style:normal; color:var(--amber); }
+  .hero p.lede{
+    max-width:620px; color:var(--paper-dim); font-size:18px; margin-top:24px;
+  }
+  .kpi-row{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:1px;
+    margin-top:56px; border:1px solid var(--line); background:var(--line);
+  }
+  @media (max-width:640px){ .kpi-row{grid-template-columns:1fr;} }
+  .kpi{
+    background:var(--panel); padding:28px 24px;
+    display:flex; flex-direction:column; gap:6px;
+  }
+  .kpi .num{ font-family:'Oswald',sans-serif; font-size:38px; color:var(--amber); font-weight:600; }
+  .kpi .label{ font-size:12px; color:var(--paper-dim); text-transform:uppercase; letter-spacing:0.08em; }
+
+  /* SECTION HEADER */
+  .sec-head{
+    display:flex; align-items:baseline; gap:16px; margin-bottom:40px;
+  }
+  .sec-num{ font-family:'IBM Plex Mono',monospace; color:var(--steel); font-size:14px; }
+  .sec-head h2{ font-size:28px; }
+
+  /* NARRATIVE */
+  .narrative-grid{
+    display:grid; grid-template-columns:1fr 1fr; gap:48px;
+  }
+  @media (max-width:780px){ .narrative-grid{grid-template-columns:1fr;} }
+  .narrative-card{
+    background:var(--panel); border:1px solid var(--line); border-radius:var(--radius);
+    padding:32px;
+  }
+  .narrative-card .tag{
+    font-size:11px; color:var(--teal); text-transform:uppercase; letter-spacing:0.1em;
+    margin-bottom:12px; display:block;
+  }
+  .narrative-card h3{ font-size:20px; margin-bottom:14px; text-transform:none; }
+  .narrative-card p{ color:var(--paper-dim); font-size:15px; }
+  .bridge{
+    text-align:center; margin:28px 0; color:var(--steel); font-family:'IBM Plex Mono',monospace; font-size:13px;
+    display:flex; align-items:center; gap:12px; justify-content:center;
+  }
+  .bridge .line{ height:1px; background:var(--line); flex:1; }
+
+  /* VIDEO */
+  .video-frame{
+    border:1px solid var(--line); background:var(--panel); border-radius:var(--radius);
+    aspect-ratio:16/9; display:flex; align-items:center; justify-content:center;
+    color:var(--paper-dim); font-size:14px; text-align:center; padding:24px;
+  }
+
+  /* RESUME */
+  .resume-box{
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px;
+    background:var(--panel); border:1px solid var(--line); border-radius:var(--radius);
+    padding:32px;
+  }
+  .resume-box .desc{ color:var(--paper-dim); font-size:14px; max-width:480px; }
+  .btn{
+    display:inline-block; background:var(--amber); color:#ffffff; font-weight:600;
+    padding:14px 28px; border-radius:var(--radius); text-decoration:none;
+    font-size:13px; text-transform:uppercase; letter-spacing:0.06em;
+    transition:transform .15s, background .15s;
+  }
+  .btn:hover{ background:#f2b358; transform:translateY(-1px); }
+
+  /* PROJECTS */
+  .project{
+    border:1px solid var(--line); border-radius:var(--radius); background:var(--panel);
+    padding:32px; margin-bottom:24px;
+  }
+  .project-head{ display:flex; justify-content:space-between; align-items:flex-start; gap:16px; flex-wrap:wrap; }
+  .project h3{ font-size:19px; text-transform:none; margin-bottom:4px; }
+  .project .org{ color:var(--teal); font-size:13px; font-family:'IBM Plex Mono',monospace; }
+  .project .result{
+    font-family:'IBM Plex Mono',monospace; font-size:22px; color:var(--amber);
+    white-space:nowrap;
+  }
+  .project .result-label{ font-size:10px; color:var(--paper-dim); text-transform:uppercase; letter-spacing:0.06em; }
+  .project p{ color:var(--paper-dim); font-size:14.5px; margin-top:16px; }
+  .project ul{ margin:16px 0 0; padding-left:18px; color:var(--paper-dim); font-size:14.5px; }
+  .project li{ margin-bottom:6px; }
+
+  /* COMMERCIAL AWARENESS */
+  .insight-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:24px; }
+  @media (max-width:780px){ .insight-grid{grid-template-columns:1fr;} }
+  .insight{
+    border-left:2px solid var(--teal); padding-left:20px;
+  }
+  .insight h3{ font-size:16px; text-transform:none; margin-bottom:8px; }
+  .insight p{ color:var(--paper-dim); font-size:14.5px; }
+
+  footer{
+    border-top:1px solid var(--line); padding:40px 0; text-align:center;
+    color:var(--steel); font-size:13px;
+  }
+  footer a{ color:var(--paper-dim); text-decoration:none; }
+  footer a:hover{ color:var(--amber); }
+
+  [data-reveal]{ opacity:0; transform:translateY(16px); transition:opacity .6s ease, transform .6s ease; }
+  [data-reveal].in{ opacity:1; transform:translateY(0); }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand">ADAN URIZAR <span>//</span> ANALYTICS</div>
+    <ul>
+      <li><a href="#narrative">Narrative</a></li>
+      <li><a href="#intro">Intro</a></li>
+      <li><a href="#resume">Resume</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#awareness">Insight</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="eyebrow">Hybrid Track — Operations → Consulting &amp; Analytics</span>
+    <h1>I turn <em>shop-floor data</em> into decisions leadership actually acts on.</h1>
+    <p class="lede">MSBA candidate at Wake Forest with two years building KPI dashboards, incentive-tracking systems, and time studies inside real manufacturing and logistics operations. Now translating that operational fluency into consulting and analyst work.</p>
+
+    <div class="kpi-row">
+      <div class="kpi">
+        <span class="num mono">5.7%</span>
+        <span class="label">CPMH increase, 4 months</span>
+      </div>
+      <div class="kpi">
+        <span class="num mono">35%</span>
+        <span class="label">Productivity gain, receiving ops</span>
+      </div>
+      <div class="kpi">
+        <span class="num mono">3</span>
+        <span class="label">Shifts of daily KPI tracking built</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="narrative">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num mono">01</span><h2>Where I've been, where I'm going</h2></div>
+    <div class="narrative-grid">
+      <div class="narrative-card" data-reveal>
+        <span class="tag">The transferable half</span>
+        <h3>Built for operations, not just analytics class</h3>
+        <p>At Shaw Industries, I designed and maintained the KPI dashboard three shifts of supervisors relied on daily, built a real-time Power Apps tracking tool, and ran time-motion studies that directly changed how a receiving floor operated. This wasn't academic modeling — it shipped, and people used it to make calls the same day.</p>
+      </div>
+      <div class="narrative-card" data-reveal>
+        <span class="tag">The targeted half</span>
+        <h3>Aimed at consulting &amp; analyst roles</h3>
+        <p>An MSBA, a Wharton quantitative modeling certificate, and hands-on Excel/Tableau/statistical work give me the analytical toolkit consulting and analyst teams need. What I bring beyond the toolkit is having already sat inside the operation being analyzed — I know what a recommendation looks like when it has to survive contact with a shift supervisor.</p>
+      </div>
+    </div>
+    <div class="bridge"><div class="line"></div><span>THE BRIDGE: OPERATIONAL FLUENCY + QUANTITATIVE RIGOR = RECOMMENDATIONS THAT ACTUALLY LAND</span><div class="line"></div></div>
+  </div>
+</section>
+
+<section id="intro" style="border-top:1px solid var(--line);">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num mono">02</span><h2>Video introduction</h2></div>
+    <div class="video-frame">
+      <!-- Replace this div's contents with an iframe embed once you've recorded and uploaded your video.
+           Example (YouTube unlisted): 
+           <iframe width="100%" height="100%" src="https://www.youtube.com/embed/VIDEO_ID" title="Intro" frameborder="0" allowfullscreen style="border-radius:3px;"></iframe>
+      -->
+      Video embed goes here — see the script + upload steps below this section.
+    </div>
+  </div>
+</section>
+
+<section id="resume" style="border-top:1px solid var(--line);">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num mono">03</span><h2>Resume</h2></div>
+    <div class="resume-box">
+      <div class="desc">Full resume covering Wake Forest MSBA coursework, Shaw Industries process improvement &amp; logistics co-ops, and quantitative certifications.</div>
+      <a class="btn" href="resume.pdf" target="_blank">View / Download PDF</a>
+    </div>
+  </div>
+</section>
+
+<section id="work" style="border-top:1px solid var(--line);">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num mono">04</span><h2>Work evidence &amp; projects</h2></div>
+
+    <div class="project" data-reveal>
+      <div class="project-head">
+        <div>
+          <h3>Operator KPI Dashboard</h3>
+          <span class="org">Shaw Industries — Process Improvement Co-op</span>
+        </div>
+        <div style="text-align:right;">
+          <div class="result">+5.7%</div>
+          <div class="result-label">CPMH, 4 months</div>
+        </div>
+      </div>
+      <p><strong>My role:</strong> Sole designer and maintainer of an Excel-based dashboard tracking daily and weekly operator productivity across three shifts, plus a companion database tracking incentive-program qualification and reward costs.</p>
+      <ul>
+        <li>Gave supervisors a live, shift-level view of productivity for the first time</li>
+        <li>Built the weekly reporting tool supervisors used to coach individual operators</li>
+        <li>Evaluated incentive program effectiveness, contributing to a 5.7% average CPMH increase within four months</li>
+      </ul>
+    </div>
+
+    <div class="project" data-reveal>
+      <div class="project-head">
+        <div>
+          <h3>Real-Time Activity Tracking App</h3>
+          <span class="org">Shaw Industries — Logistics Co-op</span>
+        </div>
+        <div style="text-align:right;">
+          <div class="result">+35%</div>
+          <div class="result-label">Receiving productivity</div>
+        </div>
+      </div>
+      <p><strong>My role:</strong> Engineered a custom Power Apps application to timestamp associate activity in real time, then used it to run time-motion and receiving-benchmark studies.</p>
+      <ul>
+        <li>Assessed unload, restock, and outbound-load times to find workflow bottlenecks</li>
+        <li>Ran a receiving time study against pallets-per-hour benchmarks after a new process rollout</li>
+        <li>Identified a 35% increase in workforce productivity following implementation</li>
+      </ul>
+    </div>
+
+    <div class="project" data-reveal>
+      <div class="project-head">
+        <div>
+          <h3>Toyota Financial Statement Analysis</h3>
+          <span class="org">Analytical Project — Wake Forest MSBA</span>
+        </div>
+      </div>
+      <p><strong>My role:</strong> Analyzed Toyota Motor Corporation's FY2024 income statement, balance sheet, and cash flow statement to evaluate revenue trends, profitability, and overall financial health.</p>
+      <ul>
+        <li>Calculated liquidity, solvency, and profitability ratios in Excel to benchmark year-over-year performance</li>
+        <li>Presented findings and recommendations via a formal executive-style presentation</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="awareness" style="border-top:1px solid var(--line);">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num mono">05</span><h2>Commercial awareness</h2></div>
+    <div class="insight-grid">
+      <div class="insight">
+        <h3>Manufacturing &amp; logistics under margin pressure</h3>
+        <p>Manufacturers are under constant pressure to squeeze cost-per-man-hour and throughput without added headcount — the exact problem I worked on daily at Shaw. Consulting and analytics teams that serve industrial clients need people who've seen a shift-level P&amp;L conversation happen in real time, not just in a case study.</p>
+      </div>
+      <div class="insight">
+        <h3>Analytics is moving from reporting to prescribing</h3>
+        <p>Dashboards that just report what happened are table stakes now; the value is in tools and analyses that tell a supervisor or a client what to do next. That's the shift I made building the Shaw KPI system, and it's the same shift consulting/analyst work asks for at a larger scale.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p class="mono">uriza26@wfu.edu · (470) 334-5368 · <a href="https://linkedin.com/in/adan-urizar" target="_blank">linkedin.com/in/adan-urizar</a></p>
+  </div>
+</footer>
+
+<script>
+  const revealEls = document.querySelectorAll('[data-reveal]');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); } });
+  },{threshold:0.15});
+  revealEls.forEach(el=>io.observe(el));
+</script>
+
+</body>
+</html>
