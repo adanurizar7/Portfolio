@@ -87,6 +87,17 @@
     max-width:780px;
   }
   .hero h1 em{ font-style:normal; color:var(--amber); }
+  .hero-photo{
+     float:right;
+     width:180px;
+     border-radius:var(--radius);
+     margin-left:32px;
+     margin-bottom:16px;
+     border:1px solid var(--line);
+   }
+   @media (max-width:640px){
+     .hero-photo{ float:none; width:140px; margin:0 0 24px; }
+   }
   .hero p.lede{
     max-width:620px; color:var(--paper-dim); font-size:18px; margin-top:24px;
   }
@@ -207,6 +218,7 @@
 <header class="hero">
   <div class="wrap">
     <span class="eyebrow">Hybrid Track — Operations → Consulting &amp; Analytics</span>
+    <img src="headshot.jpg" alt="Adan Urizar" class="hero-photo">
     <h1>I turn <em>shop-floor data</em> into decisions leadership actually acts on.</h1>
     <p class="lede">MSBA candidate at Wake Forest with two years building KPI dashboards, incentive-tracking systems, and time studies inside real manufacturing and logistics operations. Now translating that operational fluency into consulting and analyst work.</p>
 
