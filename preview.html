@@ -4,224 +4,249 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Adan Urizar | Data &amp; Business Analyst</title>
-<meta name="description" content="Adan Urizar, Wake Forest MSBA candidate (May 2027). Data and business analyst with hands-on operations experience at Shaw Industries.">
+<meta name="description" content="Adan Urizar, Wake Forest MSBA candidate (May 2027). Data and business analyst with hands-on operations experience at Shaw Industries. Python, SQL, Excel, Tableau, Power BI.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..800&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
 <style>
   :root{
-    --paper:#F7F8FA;
-    --white:#FFFFFF;
-    --ink:#1A2230;
-    --slate:#566072;
-    --rule:#D9DEE5;
+    --navy:#18243A;
+    --navy-2:#24344F;
     --gold:#9E7E38;
-    --gold-wash:#F1EADB;
-    --sans:'Archivo', system-ui, sans-serif;
-    --serif:'Source Serif 4', Georgia, serif;
+    --gold-ink:#7A5F22;
+    --gold-soft:#F3ECDD;
+    --gold-wash:#EFE5CF;
+    --page:#F6F7F9;
+    --white:#FFFFFF;
+    --text:#222A36;
+    --muted:#5D6675;
+    --rule:#E3E0D7;
+    --nav-h:64px;
+    --side-w:300px;
+    --sans:'Source Sans 3', system-ui, sans-serif;
+    --display:'Archivo', system-ui, sans-serif;
   }
   *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
+  html{scroll-behavior:smooth; scroll-padding-top:calc(var(--nav-h) + 20px);}
   @media (prefers-reduced-motion:reduce){ html{scroll-behavior:auto;} }
-  body{
-    margin:0; background:var(--paper); color:var(--ink);
-    font-family:var(--serif); font-size:18px; line-height:1.65;
-    -webkit-font-smoothing:antialiased;
-  }
-  a{color:inherit; text-decoration-color:var(--gold); text-underline-offset:3px; text-decoration-thickness:1.5px;}
-  a:hover{color:var(--gold);}
-  :focus-visible{outline:2px solid var(--gold); outline-offset:3px;}
-  .wrap{max-width:1120px; margin:0 auto; padding:0 40px;}
-  @media (max-width:700px){ .wrap{padding:0 22px;} body{font-size:17px;} }
-  h1,h2,h3{font-family:var(--sans); margin:0; font-weight:700; letter-spacing:-0.01em;}
-  h2{font-size:clamp(28px,3.4vw,40px); font-variation-settings:'wdth' 112; line-height:1.1;}
-  h3{font-size:21px; line-height:1.25;}
-  p{margin:0 0 1em;}
-  .sans{font-family:var(--sans);}
-  .muted{color:var(--slate);}
+  body{margin:0; font-family:var(--sans); font-size:17px; line-height:1.6; color:var(--text); background:var(--page); -webkit-font-smoothing:antialiased;}
+  h1,h2,h3{font-family:var(--display); color:var(--navy); margin:0; line-height:1.2;}
+  p{margin:0 0 .9em;}
+  a{color:var(--gold-ink); font-weight:600; text-decoration:none;}
+  a:hover{text-decoration:underline; text-underline-offset:3px;}
+  :focus-visible{outline:2px solid var(--gold); outline-offset:3px; border-radius:4px;}
+  img{max-width:100%; display:block;}
 
-  /* nav */
-  .top{border-bottom:1px solid var(--rule); background:var(--paper);}
-  .top .wrap{display:flex; justify-content:space-between; align-items:center; height:64px;}
-  .top .me{font-family:var(--sans); font-weight:700; font-size:17px; text-decoration:none; font-variation-settings:'wdth' 110;}
-  .top ul{list-style:none; display:flex; gap:28px; margin:0; padding:0; font-family:var(--sans); font-size:15px;}
-  .top ul a{text-decoration:none; color:var(--slate);}
-  .top ul a:hover{color:var(--ink);}
-  @media (max-width:700px){ .top ul{gap:16px; font-size:14px;} .top .hide-sm{display:none;} }
+  /* top bar */
+  .topnav{position:sticky; top:0; z-index:50; background:var(--navy); height:var(--nav-h);}
+  .topnav .in{height:100%; display:flex; align-items:center; justify-content:space-between; padding:0 28px;}
+  .brand{font-family:var(--display); font-weight:700; font-size:19px; color:var(--white); font-variation-settings:'wdth' 110;}
+  .brand:hover{text-decoration:none; color:var(--gold-wash);}
+  .topnav ul{list-style:none; margin:0; padding:0; display:flex; gap:26px;}
+  .topnav ul a{color:#DCE2EC; font-weight:600; font-size:15px;}
+  .topnav ul a:hover{color:var(--white); text-decoration:none; box-shadow:inset 0 -2px 0 var(--gold);}
+  @media (max-width:760px){ .topnav ul{gap:14px;} .topnav ul a{font-size:14px;} .topnav .opt{display:none;} .topnav .in{padding:0 18px;} }
 
-  /* hero */
-  .hero{padding:72px 0 80px;}
-  .hero-grid{display:grid; grid-template-columns:1fr 300px; gap:56px; align-items:end;}
-  .hero h1{
-    font-size:clamp(54px,10vw,128px); line-height:0.92; font-weight:800;
-    font-variation-settings:'wdth' 125; letter-spacing:-0.035em;
+  /* layout */
+  .layout{display:grid; grid-template-columns:var(--side-w) 1fr; min-height:calc(100vh - var(--nav-h));}
+  .side{background:var(--gold-soft); border-right:1px solid var(--rule);}
+  .side .stick{position:sticky; top:var(--nav-h); padding:40px 28px; text-align:center;}
+  .avatar{width:180px; height:180px; border-radius:50%; object-fit:cover; object-position:center 20%; border:5px solid var(--white); box-shadow:0 0 0 2px var(--gold); margin:0 auto 22px;}
+  .side h2{font-size:26px; font-variation-settings:'wdth' 108;}
+  .side .title{color:var(--muted); margin:8px 0 22px; font-size:16px; line-height:1.45;}
+  .side ul{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:10px;}
+  .side ul a{font-size:17px;}
+  .open{margin-top:26px; padding-top:22px; border-top:1px solid rgba(24,36,58,.14); font-size:15px; color:var(--muted); line-height:1.5;}
+  .open strong{display:block; color:var(--navy); font-family:var(--display); font-size:15px; margin-bottom:4px;}
+  main{padding:44px 52px 40px; max-width:1100px; width:100%;}
+  @media (max-width:980px){
+    .layout{grid-template-columns:1fr;}
+    .side{border-right:none; border-bottom:1px solid var(--rule);}
+    .side .stick{position:static; padding:32px 22px;}
+    .avatar{width:140px; height:140px;}
+    .side ul{flex-direction:row; justify-content:center; flex-wrap:wrap; gap:8px 22px;}
+    main{padding:32px 22px;}
   }
-  .hero h1 span{display:block;}
-  .hero .role{
-    font-family:var(--sans); font-size:clamp(19px,2vw,24px); font-weight:500;
-    margin:28px 0 18px; max-width:30ch; line-height:1.3;
-  }
-  .hero .intro{max-width:58ch; color:var(--slate);}
-  .hero img{width:100%; aspect-ratio:4/5; object-fit:cover; display:block; filter:saturate(0.9);}
-  .actions{display:flex; flex-wrap:wrap; gap:14px 22px; align-items:center; margin-top:30px; font-family:var(--sans); font-size:16px;}
-  .btn{
-    display:inline-block; padding:13px 22px; text-decoration:none; font-weight:600;
-    background:var(--ink); color:var(--white); border:1.5px solid var(--ink);
-  }
-  .btn:hover{background:var(--gold); border-color:var(--gold); color:var(--white);}
-  .btn.ghost{background:transparent; color:var(--ink);}
-  .btn.ghost:hover{background:var(--ink); color:var(--white); border-color:var(--ink);}
-  @media (max-width:860px){
-    .hero-grid{grid-template-columns:1fr; gap:32px;}
-    .hero img{width:180px;}
-    .hero-grid figure{order:-1;}
-  }
-  figure{margin:0;}
 
-  section{padding:88px 0; border-top:1px solid var(--rule);}
-  @media (max-width:700px){ section{padding:60px 0;} }
-  .sec-intro{max-width:60ch; color:var(--slate); margin-top:14px;}
+  /* intro */
+  .hello{background:var(--navy); border-radius:16px; padding:40px 40px 36px; color:#E4E8EF; margin-bottom:56px; position:relative; overflow:hidden;}
+  .hello::after{content:""; position:absolute; right:-60px; top:-60px; width:220px; height:220px; border-radius:50%; border:28px solid rgba(158,126,56,.28);}
+  .hello h1{color:var(--white); font-size:clamp(32px,4.4vw,46px); font-weight:800; font-variation-settings:'wdth' 115; letter-spacing:-0.02em; margin-bottom:16px; position:relative;}
+  .hello p{max-width:64ch; position:relative;}
+  .btns{display:flex; flex-wrap:wrap; gap:12px; margin-top:22px; position:relative;}
+  .btn{display:inline-block; padding:11px 20px; border-radius:8px; font-weight:600; font-size:16px; background:var(--gold); color:var(--white); border:1.5px solid var(--gold);}
+  .btn:hover{text-decoration:none; background:#B48F42; border-color:#B48F42;}
+  .btn.line{background:transparent; color:var(--white); border-color:rgba(255,255,255,.45);}
+  .btn.line:hover{background:rgba(255,255,255,.1);}
+  @media (max-width:600px){ .hello{padding:30px 24px;} .hello::after{display:none;} }
 
-  /* featured project */
-  .feature{background:var(--white);}
-  .feature-grid{display:grid; grid-template-columns:1fr 1.05fr; gap:64px; margin-top:40px; align-items:start;}
-  @media (max-width:900px){ .feature-grid{grid-template-columns:1fr; gap:40px;} }
-  .feature .context{font-family:var(--sans); color:var(--slate); font-size:15px; margin-top:10px;}
-  .facts{margin:28px 0; padding:0; border-top:1px solid var(--rule);}
-  .facts div{display:grid; grid-template-columns:150px 1fr; gap:16px; padding:14px 0; border-bottom:1px solid var(--rule);}
-  .facts dt{font-family:var(--sans); font-size:15px; color:var(--slate);}
-  .facts dd{margin:0; font-family:var(--sans); font-weight:600; font-size:17px;}
-  .facts dd small{font-weight:400; color:var(--slate); font-size:15px;}
-  @media (max-width:500px){ .facts div{grid-template-columns:1fr; gap:2px;} }
-  .links{font-family:var(--sans); font-size:16px; display:flex; flex-wrap:wrap; gap:10px 26px;}
+  section{margin-bottom:60px;}
+  .sec-title{font-size:26px; display:inline-block; padding-bottom:8px; border-bottom:3px solid var(--gold); margin-bottom:24px; font-variation-settings:'wdth' 108;}
 
-  .chart{border:1px solid var(--rule); padding:26px 26px 18px; background:var(--paper);}
-  .chart h3{font-size:18px;}
-  .chart .sub{font-family:var(--sans); font-size:14px; color:var(--slate); margin:6px 0 10px;}
-  .chart svg{width:100%; height:auto; display:block; overflow:visible;}
-  .chart .axis{stroke:var(--rule); stroke-width:1;}
-  .chart .tick{font-family:var(--sans); font-size:11px; fill:var(--slate);}
-  .chart .base{stroke:#A9B1BD; stroke-width:1.5; stroke-dasharray:4 5; fill:none;}
-  .chart .model{stroke:var(--gold); stroke-width:3; fill:none; stroke-linejoin:round;}
-  .chart .area{fill:var(--gold-wash);}
-  .chart .lab{font-family:var(--sans); font-size:12.5px; fill:var(--ink);}
-  .chart .lab.dim{fill:var(--slate);}
-  .chart .pt{fill:var(--white); stroke:var(--gold); stroke-width:2.5;}
-  .chart .bank{fill:var(--slate);}
-  .chart .note{font-family:var(--sans); font-size:13px; color:var(--slate); margin-top:10px;}
+  /* education */
+  .edu{display:grid; grid-template-columns:repeat(2,1fr); gap:20px 36px;}
+  .edu h3{font-size:18px; margin-bottom:4px;}
+  .edu .meta{color:var(--muted); font-size:16px;}
+  @media (max-width:640px){ .edu{grid-template-columns:1fr;} }
+
+  /* cards */
+  .card{background:var(--white); border:1px solid var(--rule); border-radius:12px; overflow:hidden;}
+  .feature{display:grid; grid-template-columns:1fr 1fr; margin-bottom:24px;}
+  .feature .body{padding:28px 30px;}
+  .feature .viz{background:var(--page); border-left:1px solid var(--rule); padding:24px 24px 16px;}
+  @media (max-width:900px){ .feature{grid-template-columns:1fr;} .feature .viz{border-left:none; border-top:1px solid var(--rule);} }
+  .card h3{font-size:20px; margin-bottom:6px;}
+  .where{color:var(--gold-ink); font-weight:600; font-size:15px; margin-bottom:12px;}
+  .card p{color:var(--muted); font-size:16.5px;}
+  .facts{display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin:18px 0 20px;}
+  .fact{background:var(--gold-soft); border-radius:8px; padding:12px 12px 10px;}
+  .fact b{display:block; font-family:var(--display); font-size:22px; color:var(--navy); font-variation-settings:'wdth' 105;}
+  .fact span{font-size:13.5px; color:var(--muted); line-height:1.35; display:block; margin-top:2px;}
+  @media (max-width:520px){ .facts{grid-template-columns:1fr;} }
+  .links{display:flex; flex-wrap:wrap; gap:8px 22px; font-size:16px;}
+
+  .viz h4{font-family:var(--display); color:var(--navy); font-size:16px; margin:0 0 4px;}
+  .viz .sub{font-size:14px; color:var(--muted); margin:0 0 6px;}
+  .viz svg{width:100%; height:auto; overflow:visible;}
+  .viz .axis{stroke:#DCE0E6;}
+  .viz .tick{font-family:var(--sans); font-size:11.5px; fill:var(--muted);}
+  .viz .base{stroke:#A9B1BD; stroke-width:1.5; stroke-dasharray:4 5;}
+  .viz .model{stroke:var(--gold); stroke-width:3; fill:none; stroke-linejoin:round;}
+  .viz .area{fill:var(--gold-wash);}
+  .viz .pt{fill:var(--white); stroke:var(--gold); stroke-width:2.5;}
+  .viz .bank{fill:var(--muted);}
+  .viz .lab{font-family:var(--sans); font-size:13px; fill:var(--text);}
+  .viz .lab.dim{fill:var(--muted);}
   .draw .model{stroke-dasharray:var(--len); stroke-dashoffset:var(--len); transition:stroke-dashoffset 1.6s cubic-bezier(.3,.6,.2,1);}
-  .draw .area, .draw .pt, .draw .callout{opacity:0; transition:opacity .5s ease 1.3s;}
+  .draw .area,.draw .pt,.draw .callout{opacity:0; transition:opacity .5s ease 1.3s;}
   .draw.go .model{stroke-dashoffset:0;}
-  .draw.go .area, .draw.go .pt, .draw.go .callout{opacity:1;}
-  @media (prefers-reduced-motion:reduce){
-    .draw .model{transition:none; stroke-dashoffset:0;}
-    .draw .area,.draw .pt,.draw .callout{transition:none; opacity:1;}
-  }
+  .draw.go .area,.draw.go .pt,.draw.go .callout{opacity:1;}
+  @media (prefers-reduced-motion:reduce){ .draw .model{transition:none; stroke-dashoffset:0;} .draw .area,.draw .pt,.draw .callout{transition:none; opacity:1;} }
 
-  /* other work */
-  .work-list{margin-top:36px; border-top:2px solid var(--ink);}
-  .item{display:grid; grid-template-columns:minmax(220px,1fr) 2fr 130px; gap:32px; padding:30px 0; border-bottom:1px solid var(--rule);}
-  .item .org{font-family:var(--sans); font-size:15px; color:var(--slate); margin-top:6px;}
-  .item .status{font-family:var(--sans); font-size:14px; color:var(--gold); font-weight:600; margin-top:8px;}
-  .item p{margin:0; color:var(--ink);}
-  .item ul{margin:10px 0 0; padding-left:18px; color:var(--slate); font-size:16.5px;}
-  .item li{margin-bottom:4px;}
-  .item .num{font-family:var(--sans); font-weight:700; font-size:34px; line-height:1; text-align:right; font-variation-settings:'wdth' 110;}
-  .item .num small{display:block; font-weight:400; font-size:13px; color:var(--slate); margin-top:8px; line-height:1.35; font-variation-settings:'wdth' 100;}
-  @media (max-width:860px){
-    .item{grid-template-columns:1fr; gap:12px;}
-    .item .num{text-align:left; font-size:28px;}
-  }
+  .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:24px;}
+  .band{background:var(--navy); color:var(--white); padding:22px 24px 18px; display:flex; align-items:flex-end; justify-content:space-between; gap:12px; min-height:112px;}
+  .band b{font-family:var(--display); font-size:40px; line-height:1; color:#E9D7AE; font-variation-settings:'wdth' 112; font-weight:800;}
+  .band span{font-size:14px; color:#C3CBD8; text-align:right; max-width:13ch; line-height:1.3;}
+  .band.img{padding:0; background:var(--white); border-bottom:1px solid var(--rule); min-height:0;}
+  .band.img img{width:100%; height:180px; object-fit:contain; background:var(--white); padding:8px;}
+  .card .in{padding:20px 22px 22px;}
+  .card ul{margin:10px 0 0; padding-left:18px; color:var(--muted); font-size:15.5px;}
+  .card li{margin-bottom:4px;}
+  .pill{display:inline-block; font-size:13px; font-weight:600; color:var(--gold-ink); background:var(--gold-soft); border-radius:20px; padding:2px 10px; margin-left:6px; vertical-align:2px;}
 
-  /* background */
-  .bg-grid{display:grid; grid-template-columns:1.25fr 1fr; gap:72px; margin-top:40px;}
-  @media (max-width:860px){ .bg-grid{grid-template-columns:1fr; gap:48px;} }
-  .bg-grid h3{font-size:18px; margin-bottom:18px;}
-  .timeline{list-style:none; margin:0; padding:0; border-left:2px solid var(--rule);}
-  .timeline li{position:relative; padding:0 0 26px 26px;}
-  .timeline li::before{content:""; position:absolute; left:-7px; top:8px; width:12px; height:12px; background:var(--paper); border:2px solid var(--gold); border-radius:50%;}
-  .timeline li.now::before{background:var(--gold);}
-  .timeline .when{font-family:var(--sans); font-size:14px; color:var(--slate);}
-  .timeline .what{font-family:var(--sans); font-weight:600; font-size:17px; line-height:1.35;}
-  .timeline .where{font-size:16px; color:var(--slate);}
-  .stack{margin:0 0 34px;}
-  .stack p{margin:0 0 10px; font-size:16.5px;}
-  .stack b{font-family:var(--sans); font-weight:600; font-size:15px; display:block; color:var(--ink);}
+  /* timeline */
+  .timeline{list-style:none; margin:0; padding:0 0 0 34px; position:relative;}
+  .timeline::before{content:""; position:absolute; left:8px; top:8px; bottom:8px; width:2px; background:var(--rule);}
+  .timeline > li{position:relative; margin-bottom:20px;}
+  .timeline > li::before{content:""; position:absolute; left:-34px; top:22px; width:14px; height:14px; border-radius:50%; background:var(--gold); border:3px solid var(--page); box-shadow:0 0 0 2px var(--gold);}
+  .timeline .card{padding:18px 22px;}
+  .timeline h3{font-size:18px; margin-bottom:2px;}
+  .timeline .where{margin-bottom:6px;}
 
-  /* video */
-  .video{margin-top:32px; aspect-ratio:16/9; background:var(--ink); max-width:880px;}
+  /* skills */
+  .tags{display:flex; flex-wrap:wrap; gap:9px; margin-bottom:22px;}
+  .tags span{background:var(--white); border:1px solid var(--rule); border-radius:20px; padding:5px 14px; font-size:15px; color:var(--navy);}
+  .sub-h{font-family:var(--display); font-size:17px; color:var(--navy); margin:0 0 10px;}
+
+  /* resume + video */
+  .two{display:grid; grid-template-columns:1fr 1fr; gap:28px; align-items:start;}
+  @media (max-width:900px){ .two{grid-template-columns:1fr;} }
+  .video{aspect-ratio:16/9; background:var(--navy); border-radius:12px; overflow:hidden;}
   .video iframe{width:100%; height:100%; border:0; display:block;}
+  .resume-card{padding:24px;}
+  .resume-card .btn{margin-top:4px;}
+  .resume-card p{color:var(--muted);}
 
-  /* contact */
-  .contact{background:var(--ink); color:var(--paper); border-top:none;}
-  .contact h2{color:var(--white); font-size:clamp(34px,5vw,60px); font-variation-settings:'wdth' 120; font-weight:800; letter-spacing:-0.03em;}
-  .contact p{color:#B9C1CD; max-width:52ch; margin-top:16px;}
-  .contact .actions a{color:var(--white);}
-  .contact .btn{background:var(--gold); border-color:var(--gold);}
-  .contact .btn:hover{background:var(--white); color:var(--ink); border-color:var(--white);}
-  .contact .btn.ghost{background:transparent; border-color:#8892A1; color:var(--white);}
-  .contact .btn.ghost:hover{background:var(--white); color:var(--ink);}
-  .contact :focus-visible{outline-color:var(--white);}
-  .fine{font-family:var(--sans); font-size:13px; color:#8892A1; margin-top:56px;}
+  footer{border-top:1px solid var(--rule); padding:26px 0 8px; color:var(--muted); font-size:15px; display:flex; flex-wrap:wrap; justify-content:space-between; gap:10px;}
 </style>
 </head>
 <body>
 
-<header class="top">
-  <div class="wrap">
-    <a class="me" href="#">Adan Urizar</a>
+<nav class="topnav" aria-label="Main">
+  <div class="in">
+    <a class="brand" href="#top">Adan Urizar</a>
     <ul>
-      <li><a href="#work">Work</a></li>
-      <li><a href="#background">Background</a></li>
-      <li class="hide-sm"><a href="#video">Video</a></li>
-      <li><a href="resume.pdf" target="_blank" rel="noopener">Resume</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li class="opt"><a href="#skills">Skills</a></li>
+      <li><a href="#resume">Resume</a></li>
     </ul>
   </div>
-</header>
+</nav>
 
-<main>
-<div class="hero">
-  <div class="wrap hero-grid">
-    <div>
-      <h1><span>Adan</span><span>Urizar</span></h1>
-      <p class="role">Data and business analyst who started on the factory floor.</p>
-      <p class="intro">I'm finishing my MSBA at Wake Forest (May 2027). Before that, I spent my co-ops at Shaw Industries building the dashboards and tracking tools supervisors used every day. Now I build models in Python and SQL, and I'm looking for data analyst, business analyst, and consulting roles starting in 2027.</p>
-      <div class="actions">
-        <a class="btn" href="resume.pdf" target="_blank" rel="noopener">View my resume</a>
-        <a class="btn ghost" href="mailto:uriza26@wfu.edu">Email me</a>
-        <a href="https://linkedin.com/in/adan-urizar" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="https://github.com/adanurizar7" target="_blank" rel="noopener">GitHub</a>
+<div class="layout" id="top">
+  <aside class="side">
+    <div class="stick">
+      <img class="avatar" src="headshot.jpg" alt="Adan Urizar">
+      <h2>Adan Urizar</h2>
+      <p class="title">Data &amp; business analyst<br>Wake Forest MSBA, May 2027</p>
+      <ul>
+        <li><a href="mailto:uriza26@wfu.edu">Email</a></li>
+        <li><a href="https://linkedin.com/in/adan-urizar" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://github.com/adanurizar7" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="resume.pdf" target="_blank" rel="noopener">Resume (PDF)</a></li>
+      </ul>
+      <div class="open">
+        <strong>Open to</strong>
+        Data analyst, business analyst, and consulting roles starting in 2027
       </div>
     </div>
-    <figure><img src="headshot.jpg" alt="Portrait of Adan Urizar"></figure>
-  </div>
-</div>
+  </aside>
 
-<section class="feature" id="work">
-  <div class="wrap">
-    <h2>Fraud detection model</h2>
-    <p class="context">Machine learning class case, team of 5, fall 2026</p>
-    <div class="feature-grid">
-      <div>
-        <p>A bank was getting four times more account applications after launching a $200 sign-up bonus, and fraud grew with them. We built a model that scores every application the moment it's submitted, so the riskiest ones go to manual review.</p>
-        <p>I built my own logistic regression, then combined my teammates' feature ideas into 55 candidates and narrowed them to the 20 that mattered, using statistical tests and stepwise selection on about 212,000 applications.</p>
-        <dl class="facts">
-          <div><dt>Accuracy (AUC)</dt><dd>0.844 <small>vs. 0.651 for the bank's current score</small></dd></div>
-          <div><dt>Fraud caught</dt><dd>48% <small>while reviewing only 7% of applications</small></dd></div>
-          <div><dt>Estimated cost</dt><dd>$1.03M to $0.71M <small>about 31% lower</small></dd></div>
-        </dl>
-        <div class="links">
-          <a href="projects/fraud-detection/Fraud_Model_Memo.pdf" target="_blank" rel="noopener">Read the memo (PDF)</a>
-          <a href="https://github.com/adanurizar7/Portfolio/blob/main/projects/fraud-detection/Fraud_Detection_Model.ipynb" target="_blank" rel="noopener">See the Python notebook</a>
+  <main>
+    <div class="hello">
+      <h1>Hi, I'm Adan.</h1>
+      <p>I'm an MSBA candidate at Wake Forest with a background in logistics and supply chain. At Shaw Industries, I built the dashboards and tracking tools supervisors used every day, and measured a 35% productivity gain on a receiving floor. Now I build models in Python and SQL, like a fraud model that beat a bank's current score and a rider recruiting model for a pro bull riding team.</p>
+      <div class="btns">
+        <a class="btn" href="resume.pdf" target="_blank" rel="noopener">View my resume</a>
+        <a class="btn line" href="#projects">See my projects</a>
+      </div>
+    </div>
+
+    <section aria-labelledby="edu-t">
+      <h2 class="sec-title" id="edu-t">Education</h2>
+      <div class="edu">
+        <div>
+          <h3>Wake Forest University School of Business</h3>
+          <div class="meta">Master of Science in Business Analytics, May 2027<br>Winston-Salem, NC</div>
+        </div>
+        <div>
+          <h3>Georgia Highlands College</h3>
+          <div class="meta">BBA, Logistics &amp; Supply Chain Management, May 2026<br>Cartersville, GA</div>
+        </div>
+        <div>
+          <h3>Wharton School, University of Pennsylvania</h3>
+          <div class="meta">Finance &amp; Quantitative Modeling Certificate, January 2026</div>
+        </div>
+        <div>
+          <h3>Google</h3>
+          <div class="meta">Foundations of Data Science, June 2026</div>
         </div>
       </div>
+    </section>
 
-      <figure class="chart draw" id="gains" aria-labelledby="gains-title gains-desc">
-        <h3 id="gains-title">How much fraud you find by reviewing the riskiest applications</h3>
-        <p class="sub" id="gains-desc">Test set of 52,998 applications. If the bank reviews its riskiest 5%, our model finds 40.6% of fraud. The bank's current score finds 6.4%.</p>
-        <svg viewBox="0 0 520 330" role="img" aria-label="Line chart. Share of fraud found rises from 9.8 percent at the riskiest 1 percent of applications, to 40.6 percent at 5 percent, 55.9 percent at 10 percent, and 71.6 percent at 20 percent. The current bank score finds 6.4 percent at 5 percent.">
-          <!-- plot area: x 50..500 maps 0..20% ; y 290..20 maps 0..80% -->
-          <g>
+    <section id="projects" aria-labelledby="proj-t">
+      <h2 class="sec-title" id="proj-t">Projects</h2>
+
+      <article class="card feature">
+        <div class="body">
+          <h3>Fraud detection model</h3>
+          <div class="where">Machine Learning, Wake Forest MSBA, fall 2026 (team of 5, class case)</div>
+          <p>A bank was getting four times more account applications after launching a $200 sign-up bonus, and fraud grew with them. We built a logistic regression in Python that scores each application the moment it's submitted. I combined my teammates' feature ideas into 55 candidates and narrowed them to 20 using about 212,000 applications.</p>
+          <div class="facts">
+            <div class="fact"><b>0.844</b><span>AUC, vs. 0.651 for the bank's score</span></div>
+            <div class="fact"><b>48%</b><span>of fraud caught reviewing 7% of apps</span></div>
+            <div class="fact"><b>31%</b><span>lower cost: $1.03M to $0.71M</span></div>
+          </div>
+          <div class="links">
+            <a href="projects/fraud-detection/Fraud_Model_Memo.pdf" target="_blank" rel="noopener">Read the memo (PDF)</a>
+            <a href="https://github.com/adanurizar7/Portfolio/blob/main/projects/fraud-detection/Fraud_Detection_Model.ipynb" target="_blank" rel="noopener">View on GitHub</a>
+          </div>
+        </div>
+        <figure class="viz draw" id="gains" style="margin:0">
+          <h4>Fraud found by reviewing the riskiest applications</h4>
+          <p class="sub">Test set of 52,998 applications</p>
+          <svg viewBox="0 0 520 335" role="img" aria-label="Line chart. Reviewing the riskiest 1 percent of applications finds 9.8 percent of fraud, 5 percent finds 40.6 percent, 10 percent finds 55.9 percent, and 20 percent finds 71.6 percent. The bank's current score finds 6.4 percent at 5 percent.">
             <line class="axis" x1="50" y1="290" x2="500" y2="290"/>
             <line class="axis" x1="50" y1="222.5" x2="500" y2="222.5"/>
             <line class="axis" x1="50" y1="155" x2="500" y2="155"/>
@@ -237,191 +262,162 @@
             <text class="tick" x="275" y="312" text-anchor="middle">10%</text>
             <text class="tick" x="387.5" y="312" text-anchor="middle">15%</text>
             <text class="tick" x="500" y="312" text-anchor="middle">20%</text>
-            <text class="tick" x="275" y="330" text-anchor="middle">Share of applications reviewed (riskiest first)</text>
-          </g>
-          <!-- random-review baseline: y = x -->
-          <line class="base" x1="50" y1="290" x2="500" y2="222.5"/>
-          <text class="lab dim" x="496" y="254" text-anchor="end">Reviewing at random</text>
-          <!-- model area + line: (0,0)(1,9.8)(5,40.6)(10,55.9)(20,71.6) -->
-          <path class="area" d="M50,290 L72.5,256.9 L162.5,153 L275,101.3 L500,48.4 L500,222.5 Z"/>
-          <path class="model" id="modelLine" d="M50,290 L72.5,256.9 L162.5,153 L275,101.3 L500,48.4"/>
-          <g class="pt-group">
+            <text class="tick" x="275" y="333" text-anchor="middle">Share of applications reviewed, riskiest first</text>
+            <line class="base" x1="50" y1="290" x2="500" y2="222.5"/>
+            <text class="lab dim" x="496" y="254" text-anchor="end">Reviewing at random</text>
+            <path class="area" d="M50,290 L72.5,256.9 L162.5,153 L275,101.3 L500,48.4 L500,222.5 Z"/>
+            <path class="model" id="modelLine" d="M50,290 L72.5,256.9 L162.5,153 L275,101.3 L500,48.4"/>
             <circle class="pt" cx="72.5" cy="256.9" r="4.5"/>
             <circle class="pt" cx="162.5" cy="153" r="5.5"/>
             <circle class="pt" cx="275" cy="101.3" r="4.5"/>
             <circle class="pt" cx="500" cy="48.4" r="4.5"/>
-          </g>
-          <g class="callout">
-            <text class="lab" x="176" y="178"><tspan font-weight="700">40.6%</tspan> with our model</text>
-            <circle class="bank" cx="162.5" cy="268.4" r="5"/>
-            <text class="lab dim" x="174" y="272">6.4% with the bank's current score</text>
-            <text class="lab" x="268" y="88" text-anchor="end">55.9%</text>
-            <text class="lab" x="494" y="38" text-anchor="end">71.6%</text>
-          </g>
-        </svg>
-        <p class="note">Our recommended cut-off reviews about 7% of applications and catches 48% of fraud.</p>
-      </figure>
-    </div>
-  </div>
-</section>
-
-<section aria-labelledby="more-work">
-  <div class="wrap">
-    <h2 id="more-work">More work</h2>
-    <div class="work-list">
-
-      <article class="item">
-        <div>
-          <h3>Rider recruiting model</h3>
-          <div class="org">Texas Rattlers, PBR Teams. Graduate consultant, MSBA practicum</div>
-          <div class="status">In progress</div>
-        </div>
-        <div>
-          <p>Helping a pro bull riding team find riders who are improving before other teams notice them.</p>
-          <ul>
-            <li>Built a database of every ride by all 212 PBR Teams riders, checked 100% against PBR's official totals</li>
-            <li>Building a model that predicts which riders are most likely to post 90-point rides</li>
-          </ul>
-        </div>
-        <div class="num">62,780<small>rides in the database</small></div>
+            <g class="callout">
+              <text class="lab" x="176" y="178"><tspan font-weight="700">40.6%</tspan> with our model</text>
+              <circle class="bank" cx="162.5" cy="268.4" r="5"/>
+              <text class="lab dim" x="174" y="272">6.4% with the bank's current score</text>
+              <text class="lab" x="268" y="88" text-anchor="end">55.9%</text>
+              <text class="lab" x="494" y="38" text-anchor="end">71.6%</text>
+            </g>
+          </svg>
+        </figure>
       </article>
 
-      <article class="item">
-        <div>
-          <h3>StockSmart AI chat app</h3>
-          <div class="org">Wake Forest School of Business. Graduate research assistant</div>
-          <div class="status">In progress</div>
-        </div>
-        <div>
-          <p>Turning several custom ChatGPT assistants into one web app for a faculty research study. Participants open it from a link.</p>
-          <ul>
-            <li>Runs participants through 4 study conditions</li>
-            <li>Connects to Qualtrics and saves chat transcripts for analysis</li>
-          </ul>
-        </div>
-        <div class="num">4<small>study conditions</small></div>
-      </article>
+      <div class="grid">
+        <article class="card">
+          <div class="band"><b>62,780</b><span>rides in the rider database</span></div>
+          <div class="in">
+            <h3>Rider recruiting model <span class="pill">In progress</span></h3>
+            <div class="where">Texas Rattlers, PBR Teams (MSBA practicum)</div>
+            <p>Helping a pro bull riding team find riders who are improving before other teams notice them.</p>
+            <ul>
+              <li>Built a database of every ride by all 212 PBR Teams riders, checked 100% against PBR's official totals</li>
+              <li>Building a model that predicts which riders will post 90-point rides</li>
+            </ul>
+          </div>
+        </article>
 
-      <article class="item">
-        <div>
-          <h3>Operator KPI dashboard</h3>
-          <div class="org">Shaw Industries. Process improvement co-op</div>
-        </div>
-        <div>
-          <p>Built and ran the Excel dashboard that tracked daily and weekly productivity for operators across three shifts, plus a database for a new incentive program covering 90 employees.</p>
-          <ul>
-            <li>Gave supervisors a shift-level view of productivity they could act on the same day</li>
-            <li>Built the weekly report supervisors used to coach individual operators</li>
-            <li>Measured whether the incentive program was working</li>
-          </ul>
-        </div>
-        <div class="num">+5.7%<small>output per labor hour in 4 months</small></div>
-      </article>
+        <article class="card">
+          <div class="band"><b>4</b><span>study conditions in one app</span></div>
+          <div class="in">
+            <h3>StockSmart AI chat app <span class="pill">In progress</span></h3>
+            <div class="where">Graduate research assistant, Wake Forest School of Business</div>
+            <p>Turning several custom ChatGPT assistants into one web app for a faculty research study.</p>
+            <ul>
+              <li>Participants open it from a link, with no ChatGPT account needed</li>
+              <li>Connects to Qualtrics and saves chat transcripts for analysis</li>
+            </ul>
+          </div>
+        </article>
 
-      <article class="item">
-        <div>
-          <h3>Real-time activity tracking app</h3>
-          <div class="org">Shaw Industries. Logistics co-op</div>
-        </div>
-        <div>
-          <p>Built a Power Apps app connected to SharePoint that time-stamps what associates are doing in real time, replacing paper logs.</p>
-          <ul>
-            <li>Used the data to time unloading, restocking, and outbound loading for 16 associates and find bottlenecks</li>
-            <li>Ran a before-and-after study of pallets per hour once a new process rolled out</li>
-          </ul>
-        </div>
-        <div class="num">+35%<small>receiving productivity</small></div>
-      </article>
+        <article class="card">
+          <div class="band"><b>+5.7%</b><span>output per labor hour in 4 months</span></div>
+          <div class="in">
+            <h3>Operator KPI dashboard</h3>
+            <div class="where">Shaw Industries, process improvement co-op</div>
+            <p>An Excel dashboard tracking daily and weekly productivity across 3 shifts, plus a database for a new incentive program covering 90 employees.</p>
+            <ul>
+              <li>Gave supervisors a shift-level view they could act on the same day</li>
+              <li>Measured whether the incentive program was working</li>
+            </ul>
+          </div>
+        </article>
 
-    </div>
-  </div>
-</section>
-
-<section id="background" aria-labelledby="bg-title">
-  <div class="wrap">
-    <h2 id="bg-title">Background</h2>
-    <div class="bg-grid">
-      <div>
-        <h3>Experience</h3>
-        <ol class="timeline" reversed>
-          <li class="now">
-            <div class="when">Oct 2026 to now</div>
-            <div class="what">Graduate Consultant, Texas Rattlers (PBR Teams)</div>
-            <div class="where">MSBA practicum, Winston-Salem, NC</div>
-          </li>
-          <li class="now">
-            <div class="when">Oct 2026 to now</div>
-            <div class="what">Graduate Research Assistant</div>
-            <div class="where">Wake Forest University School of Business</div>
-          </li>
-          <li>
-            <div class="when">Jan 2026 to Jul 2026</div>
-            <div class="what">Process Improvement Co-op, Shaw Industries</div>
-            <div class="where">Dalton, GA</div>
-          </li>
-          <li>
-            <div class="when">Jun 2025 to Dec 2025</div>
-            <div class="what">Logistics Co-op, Shaw Industries</div>
-            <div class="where">Calhoun, GA</div>
-          </li>
-        </ol>
+        <article class="card">
+          <div class="band"><b>+35%</b><span>receiving productivity</span></div>
+          <div class="in">
+            <h3>Real-time activity tracking app</h3>
+            <div class="where">Shaw Industries, logistics co-op</div>
+            <p>A Power Apps app connected to SharePoint that time-stamps associate activity in real time, replacing paper logs.</p>
+            <ul>
+              <li>Timed unloading, restocking, and loading for 16 associates to find bottlenecks</li>
+              <li>Ran a before-and-after study of pallets per hour after a process change</li>
+            </ul>
+          </div>
+        </article>
       </div>
-      <div>
-        <div class="stack">
-          <h3>Education</h3>
-          <p><b>Wake Forest University</b>Master of Science in Business Analytics, May 2027</p>
-          <p><b>Georgia Highlands College</b>BBA, Logistics &amp; Supply Chain Management, May 2026</p>
-          <p><b>Certificates</b>Wharton Finance &amp; Quantitative Modeling; Google Foundations of Data Science</p>
+    </section>
+
+    <section id="experience" aria-labelledby="exp-t">
+      <h2 class="sec-title" id="exp-t">Experience &amp; leadership</h2>
+      <ol class="timeline">
+        <li><div class="card">
+          <h3>Graduate Consultant</h3>
+          <div class="where">Oct 2026 to present, Texas Rattlers (PBR Teams), MSBA practicum</div>
+          <ul><li>Building a database of 62,780 rides for all 212 PBR Teams riders and a model to help the team recruit riders on the rise</li></ul>
+        </div></li>
+        <li><div class="card">
+          <h3>Graduate Research Assistant</h3>
+          <div class="where">Oct 2026 to present, Wake Forest University School of Business</div>
+          <ul><li>Developing StockSmart, an AI chat web app for a faculty research study that connects to Qualtrics and runs 4 study conditions</li></ul>
+        </div></li>
+        <li><div class="card">
+          <h3>MSBA Student Engagement Council and MSBA Ambassador</h3>
+          <div class="where">2026 to present, Wake Forest University</div>
+          <ul>
+            <li>Plan events and activities for MSBA students</li>
+            <li>Connect with prospective students and share my experience in the program</li>
+          </ul>
+        </div></li>
+        <li><div class="card">
+          <h3>Process Improvement Co-op</h3>
+          <div class="where">Jan 2026 to Jul 2026, Shaw Industries, Dalton, GA</div>
+          <ul>
+            <li>Built an Excel KPI dashboard with XLOOKUP and pivot tables to track productivity for 9 operators across 3 shifts</li>
+            <li>Built the weekly performance report supervisors used to coach operators</li>
+            <li>Designed a database tracking incentive results and reward costs for 90 employees</li>
+            <li>Analyzed the incentive program's results, contributing to a 5.7% increase in output per labor hour in 4 months</li>
+          </ul>
+        </div></li>
+        <li><div class="card">
+          <h3>Logistics Co-op</h3>
+          <div class="where">Jun 2025 to Dec 2025, Shaw Industries, Calhoun, GA</div>
+          <ul>
+            <li>Built a Power Apps app connected to SharePoint to capture time-stamped associate activity, replacing manual logs</li>
+            <li>Ran a time-motion study of 16 associates to find bottlenecks in unloading, restocking, and loading</li>
+            <li>Ran a before-and-after time study that measured a 35% increase in receiving productivity</li>
+          </ul>
+        </div></li>
+      </ol>
+    </section>
+
+    <section id="skills" aria-labelledby="sk-t">
+      <h2 class="sec-title" id="sk-t">Skills</h2>
+      <p class="sub-h">Programming &amp; data</p>
+      <div class="tags"><span>Python</span><span>pandas</span><span>scikit-learn</span><span>statsmodels</span><span>SQL</span><span>Jupyter</span></div>
+      <p class="sub-h">Analysis &amp; visualization</p>
+      <div class="tags"><span>Excel</span><span>Tableau</span><span>Power BI</span><span>Logistic regression</span><span>Linear regression</span><span>Hypothesis testing</span><span>Feature selection</span></div>
+      <p class="sub-h">Tools &amp; platforms</p>
+      <div class="tags"><span>Power Apps</span><span>SharePoint</span><span>Qualtrics</span><span>Google Workspace</span></div>
+    </section>
+
+    <section id="resume" aria-labelledby="res-t">
+      <h2 class="sec-title" id="res-t">Resume &amp; video</h2>
+      <div class="two">
+        <div class="card resume-card">
+          <h3>Resume</h3>
+          <p>One page covering my MSBA, practicum and research work, Shaw Industries co-ops, and fraud model project. Updated November 2026.</p>
+          <a class="btn" href="resume.pdf" target="_blank" rel="noopener">Download resume (PDF)</a>
         </div>
-        <div class="stack">
-          <h3>Tools</h3>
-          <p>Python (pandas, scikit-learn, statsmodels), SQL, Excel, Tableau, Power BI, Power Apps, SharePoint</p>
-        </div>
-        <div class="stack">
-          <h3>On campus</h3>
-          <p>MSBA Student Engagement Council member and MSBA Ambassador</p>
+        <div class="video">
+          <iframe src="https://www.youtube.com/embed/903PNvUv7cc" title="Adan Urizar video introduction" allowfullscreen loading="lazy"></iframe>
         </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<section id="video" aria-labelledby="video-title">
-  <div class="wrap">
-    <h2 id="video-title">Video introduction</h2>
-    <p class="sec-intro">A short video introduction: who I am, what I've worked on, and what I'm looking for.</p>
-    <div class="video">
-      <iframe src="https://www.youtube.com/embed/903PNvUv7cc" title="Adan Urizar video introduction" allowfullscreen loading="lazy"></iframe>
-    </div>
-  </div>
-</section>
-
-<section class="contact" id="contact" aria-labelledby="contact-title">
-  <div class="wrap">
-    <h2 id="contact-title">Let's talk.</h2>
-    <p>I'm looking for data analyst, business analyst, and consulting roles starting in 2027, especially in healthcare and finance. The fastest way to reach me is email.</p>
-    <div class="actions">
-      <a class="btn" href="mailto:uriza26@wfu.edu">uriza26@wfu.edu</a>
-      <a class="btn ghost" href="resume.pdf" target="_blank" rel="noopener">Download resume</a>
-      <a href="https://linkedin.com/in/adan-urizar" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="tel:+14703345368">(470) 334-5368</a>
-    </div>
-    <p class="fine">Updated November 2026</p>
-  </div>
-</section>
-</main>
+    <footer>
+      <span>Adan Urizar, 2026</span>
+      <span><a href="mailto:uriza26@wfu.edu">uriza26@wfu.edu</a>  ·  (470) 334-5368</span>
+    </footer>
+  </main>
+</div>
 
 <script>
   (function(){
-    var fig = document.getElementById('gains');
-    var line = document.getElementById('modelLine');
-    if(!fig || !line) return;
-    var len = Math.ceil(line.getTotalLength());
-    fig.style.setProperty('--len', len);
+    var fig=document.getElementById('gains'), line=document.getElementById('modelLine');
+    if(!fig||!line) return;
+    fig.style.setProperty('--len', Math.ceil(line.getTotalLength()));
     if(!('IntersectionObserver' in window)){ fig.classList.add('go'); return; }
-    var io = new IntersectionObserver(function(entries){
-      entries.forEach(function(e){ if(e.isIntersecting){ fig.classList.add('go'); io.disconnect(); } });
-    }, {threshold:0.45});
+    var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ fig.classList.add('go'); io.disconnect(); } }); },{threshold:0.4});
     io.observe(fig);
   })();
 </script>
