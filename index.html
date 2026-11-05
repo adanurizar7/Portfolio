@@ -159,6 +159,39 @@
   .copied{display:block; font-size:13px; color:var(--muted); min-height:0;}
   footer .copied{display:inline; margin-left:6px;}
   footer{border-top:1px solid var(--rule); padding:26px 0 8px; color:var(--muted); font-size:15px; display:flex; flex-wrap:wrap; justify-content:space-between; gap:10px;}
+
+  /* v2 overrides: own look */
+  .topnav{background:var(--white); border-bottom:1px solid var(--rule);}
+  .brand{color:var(--navy);}
+  .brand:hover{color:var(--gold-ink);}
+  .topnav ul a{color:var(--muted);}
+  .topnav ul a:hover{color:var(--navy); box-shadow:inset 0 -2px 0 var(--gold);}
+  .layout{display:block; min-height:0;}
+  main{margin:0 auto; padding:40px 40px 40px; max-width:1120px;}
+  @media (max-width:980px){ main{padding:28px 20px;} }
+  .hello{display:grid; grid-template-columns:200px 1fr; gap:40px; align-items:start; padding:40px;}
+  .hello .avatar{width:200px; height:240px; border-radius:14px; object-fit:cover; object-position:center 18%; border:none; box-shadow:none; margin:0; position:relative;}
+  .hello-text{position:relative; min-width:0;}
+  .hello h1{margin-bottom:6px;}
+  .hello .role{color:#E9D7AE; font-family:var(--display); font-weight:600; font-size:18px; margin-bottom:16px;}
+  .hello p{max-width:none;}
+  .contact{list-style:none; margin:20px 0 0; padding:18px 0 0; border-top:1px solid rgba(255,255,255,.14); display:flex; flex-wrap:wrap; gap:8px 26px;}
+  .contact a{color:var(--white);}
+  .contact .copied{display:inline; margin-left:8px; color:#C3CBD8;}
+  @media (max-width:760px){
+    .hello{grid-template-columns:1fr; gap:22px; padding:28px 22px;}
+    .hello .avatar{width:140px; height:168px;}
+  }
+  .sec-title{display:flex; align-items:center; gap:18px; border-bottom:none; padding-bottom:0; width:100%;}
+  .sec-title::after{content:""; flex:1; height:1px; background:var(--rule);}
+  .sec-title::before{content:""; width:10px; height:10px; background:var(--gold); border-radius:2px; flex:none;}
+  .timeline{padding-left:0;}
+  .timeline::before, .timeline > li::before{display:none;}
+  .timeline > li{margin-bottom:14px;}
+  .timeline .card{border-left:4px solid var(--gold); border-radius:8px;}
+  .tags span{border-radius:6px; background:var(--gold-soft); border-color:transparent;}
+  .grid{grid-template-columns:repeat(2,1fr);}
+  @media (max-width:760px){ .grid{grid-template-columns:1fr;} }
 </style>
 </head>
 <body>
@@ -176,31 +209,23 @@
 </nav>
 
 <div class="layout" id="top">
-  <aside class="side">
-    <div class="stick">
-      <img class="avatar" src="headshot.jpg" alt="Adan Urizar">
-      <h2>Adan Urizar</h2>
-      <p class="title">Data &amp; business analyst<br>Wake Forest MSBA, May 2027</p>
-      <ul>
-        <li><a href="mailto:adanurizar7@gmail.com" class="copy-email">adanurizar7@gmail.com</a><span class="copied" role="status" aria-live="polite"></span></li>
-        <li><a href="https://linkedin.com/in/adan-urizar" target="_blank" rel="noopener">LinkedIn</a></li>
-        <li><a href="https://github.com/adanurizar7" target="_blank" rel="noopener">GitHub</a></li>
-        <li><a href="resume.pdf" target="_blank" rel="noopener">Resume (PDF)</a></li>
-      </ul>
-      <div class="open">
-        <strong>Open to</strong>
-        Data analyst, business analyst, and consulting roles starting in 2027
-      </div>
-    </div>
-  </aside>
 
   <main>
     <div class="hello">
-      <h1>Hi, I'm Adan.</h1>
+      <img class="avatar" src="headshot.jpg" alt="Adan Urizar">
+      <div class="hello-text">
+      <h1>Adan Urizar</h1>
+      <p class="role">Data &amp; business analyst, Wake Forest MSBA, May 2027</p>
       <p>I'm an MSBA candidate at Wake Forest with a logistics background, looking for data analyst, business analyst, and consulting roles. I work in Python, SQL, Excel, Tableau, and Power BI, and I've built KPI dashboards, a real-time tracking app, and predictive models. My fraud detection model scored an AUC of 0.844 against the bank's current 0.651 and would cut estimated fraud costs by 31%, and a time study I ran measured a 35% jump in productivity. On campus, I'm a graduate research assistant building an AI chat app for a faculty study, a member of the MSBA Student Engagement Council, and an MSBA Ambassador.</p>
       <div class="btns">
         <a class="btn" href="resume.pdf" target="_blank" rel="noopener">View my resume</a>
         <a class="btn line" href="#projects">See my projects</a>
+      </div>
+      <ul class="contact">
+        <li><a href="mailto:adanurizar7@gmail.com" class="copy-email">adanurizar7@gmail.com</a><span class="copied" role="status" aria-live="polite"></span></li>
+        <li><a href="https://linkedin.com/in/adan-urizar" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="https://github.com/adanurizar7" target="_blank" rel="noopener">GitHub</a></li>
+      </ul>
       </div>
     </div>
 
