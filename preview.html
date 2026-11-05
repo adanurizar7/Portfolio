@@ -156,6 +156,8 @@
   .resume-card .btn{margin-top:4px;}
   .resume-card p{color:var(--muted);}
 
+  .copied{display:block; font-size:13px; color:var(--muted); min-height:0;}
+  footer .copied{display:inline; margin-left:6px;}
   footer{border-top:1px solid var(--rule); padding:26px 0 8px; color:var(--muted); font-size:15px; display:flex; flex-wrap:wrap; justify-content:space-between; gap:10px;}
 </style>
 </head>
@@ -180,7 +182,7 @@
       <h2>Adan Urizar</h2>
       <p class="title">Data &amp; business analyst<br>Wake Forest MSBA, May 2027</p>
       <ul>
-        <li><a href="mailto:uriza26@wfu.edu">Email</a></li>
+        <li><a href="mailto:uriza26@wfu.edu" class="copy-email">uriza26@wfu.edu</a><span class="copied" role="status" aria-live="polite"></span></li>
         <li><a href="https://linkedin.com/in/adan-urizar" target="_blank" rel="noopener">LinkedIn</a></li>
         <li><a href="https://github.com/adanurizar7" target="_blank" rel="noopener">GitHub</a></li>
         <li><a href="resume.pdf" target="_blank" rel="noopener">Resume (PDF)</a></li>
@@ -402,7 +404,7 @@
 
     <footer>
       <span>Adan Urizar, 2026</span>
-      <span><a href="mailto:uriza26@wfu.edu">uriza26@wfu.edu</a>  ·  (470) 334-5368</span>
+      <span><a href="mailto:uriza26@wfu.edu" class="copy-email">uriza26@wfu.edu</a><span class="copied" role="status" aria-live="polite"></span>  ·  (470) 334-5368</span>
     </footer>
   </main>
 </div>
@@ -416,6 +418,17 @@
     var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ fig.classList.add('go'); io.disconnect(); } }); },{threshold:0.4});
     io.observe(fig);
   })();
+  document.querySelectorAll('.copy-email').forEach(function(a){
+    a.addEventListener('click', function(){
+      var msg = a.nextElementSibling;
+      if(navigator.clipboard){
+        navigator.clipboard.writeText('uriza26@wfu.edu').then(function(){
+          msg.textContent = 'Email copied';
+          setTimeout(function(){ msg.textContent=''; }, 2500);
+        }).catch(function(){});
+      }
+    });
+  });
 </script>
 </body>
 </html>
