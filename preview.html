@@ -151,8 +151,7 @@
   /* resume + video */
   .two{display:grid; grid-template-columns:1fr 1fr; gap:28px; align-items:start;}
   @media (max-width:900px){ .two{grid-template-columns:1fr;} }
-  .video{aspect-ratio:16/9; background:var(--navy); border-radius:12px; overflow:hidden;}
-  .video iframe{width:100%; height:100%; border:0; display:block;}
+  .two.one{grid-template-columns:minmax(0,560px);}
   .resume-card{padding:24px;}
   .resume-card .btn{margin-top:4px;}
   .resume-card p{color:var(--muted);}
@@ -391,15 +390,12 @@
     </section>
 
     <section id="resume" aria-labelledby="res-t">
-      <h2 class="sec-title" id="res-t">Resume &amp; video</h2>
-      <div class="two">
+      <h2 class="sec-title" id="res-t">Resume</h2>
+      <div class="two one">
         <div class="card resume-card">
           <h3>Resume</h3>
           <p>One page covering my MSBA, practicum and research work, Shaw Industries co-ops, and fraud model project. Updated November 2026.</p>
           <a class="btn" href="resume.pdf" target="_blank" rel="noopener">Download resume (PDF)</a>
-        </div>
-        <div class="video">
-          <iframe src="https://www.youtube.com/embed/903PNvUv7cc" title="Adan Urizar video introduction" allowfullscreen loading="lazy"></iframe>
         </div>
       </div>
     </section>
