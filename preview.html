@@ -80,15 +80,16 @@
   .contact a{color:var(--ink); font-weight:500; border-bottom:1px solid var(--line-2); padding-bottom:2px;}
   .contact a:hover{color:var(--gold); border-color:var(--gold);}
   .copied{color:var(--gold); font-size:14px; margin-left:6px;}
-  .portrait{position:relative; justify-self:end; width:min(100%,380px);}
-  .portrait::before{content:""; position:absolute; inset:18px -18px -18px 18px; border:1.5px solid var(--gold); border-radius:24px; opacity:.8;}
-  .portrait img{position:relative; width:100%; aspect-ratio:4/5; object-fit:cover; object-position:center 18%; border-radius:24px; box-shadow:0 30px 60px rgba(19,32,54,.18);}
+  .portrait{position:relative; justify-self:center; width:min(100%,320px);}
+  .portrait::before{content:""; position:absolute; inset:-14px -14px 14px 14px; border-radius:30px; background:linear-gradient(145deg, #E9D9B4, #C9AA66 55%, #9E7E38); transform:rotate(3deg); opacity:.9;}
+  .portrait::after{content:""; position:absolute; inset:-28px; border-radius:40px; border:1px solid rgba(158,126,56,.35); pointer-events:none;}
+  .portrait img{position:relative; width:100%; aspect-ratio:4/5; object-fit:cover; object-position:center 18%; border-radius:26px; border:8px solid #fff; box-shadow:0 24px 50px -18px rgba(19,32,54,.35);}
   .portrait .tag{position:absolute; left:-28px; bottom:34px; background:rgba(255,255,255,.92); backdrop-filter:blur(8px); border:1px solid var(--line); border-radius:14px; padding:12px 16px; font-size:14px; color:var(--muted); line-height:1.35; box-shadow:0 12px 30px rgba(19,32,54,.12);}
   .portrait .tag b{display:block; font-family:var(--display); font-size:22px; color:var(--ink);}
   @media (max-width:900px){
     .hero{min-height:0; padding-top:110px;}
     .hero .wrap{grid-template-columns:1fr; gap:48px;}
-    .portrait{justify-self:start; width:min(80%,300px); margin-left:10px;}
+    .portrait{justify-self:start; width:min(70%,250px); margin:14px 0 10px 28px;}
     .portrait .tag{left:auto; right:-14px;}
   }
   .reveal{opacity:0; transform:translateY(14px); transition:opacity .8s ease, transform .8s ease;}
@@ -249,7 +250,7 @@
       <div class="kicker reveal d1"><i></i>Wake Forest MSBA, graduating May 2027</div>
       <h1 class="reveal d2">Adan Urizar</h1>
       <p class="role reveal d3">Data analytics &amp; consulting</p>
-      <p class="intro reveal d3">I'm an MSBA candidate at Wake Forest with a logistics background, looking for data analyst, business analyst, and consulting roles. I work in Python, SQL, Excel, Tableau, and Power BI, and I've built KPI dashboards, a real-time tracking app, and predictive models. My XGBoost fraud detection model scored an AUC of 0.870 against the bank's current 0.645 and would cut estimated fraud costs by 36%, and a time study I ran measured a 35% jump in productivity. On campus, I'm a graduate research assistant building an AI chat app for a faculty study, a member of the MSBA Student Engagement Council, and an MSBA Ambassador.</p>
+      <p class="intro reveal d3">I'm an MSBA candidate at Wake Forest with a logistics background, looking for data analyst, business analyst, and consulting roles. I work in Python, SQL, Excel, Tableau, and Power BI, and I've built KPI dashboards, a real-time tracking app, and predictive models. On campus, I'm a graduate research assistant building an AI chat app for a faculty study, a member of the MSBA Student Engagement Council, and an MSBA Ambassador.</p>
       <div class="btns reveal d4">
         <a class="btn primary" href="#work">See my work</a>
         <a class="btn ghost" href="resume.pdf" target="_blank" rel="noopener">Download resume</a>
