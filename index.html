@@ -113,15 +113,17 @@
   .viz .base{stroke:#A9B1BD; stroke-width:1.5; stroke-dasharray:4 5;}
   .viz .model{stroke:var(--gold); stroke-width:3; fill:none; stroke-linejoin:round;}
   .viz .area{fill:var(--gold-wash);}
+  .viz .logit{stroke:#8A93A3; stroke-width:2; fill:none; stroke-dasharray:6 4;}
+  .viz .logit-pt{fill:#8A93A3;}
   .viz .pt{fill:var(--white); stroke:var(--gold); stroke-width:2.5;}
   .viz .bank{fill:var(--muted);}
   .viz .lab{font-family:var(--sans); font-size:13px; fill:var(--text);}
   .viz .lab.dim{fill:var(--muted);}
   .draw .model{stroke-dasharray:var(--len); stroke-dashoffset:var(--len); transition:stroke-dashoffset 1.6s cubic-bezier(.3,.6,.2,1);}
-  .draw .area,.draw .pt,.draw .callout{opacity:0; transition:opacity .5s ease 1.3s;}
+  .draw .area,.draw .pt,.draw .callout,.draw .logit{opacity:0; transition:opacity .5s ease 1.3s;}
   .draw.go .model{stroke-dashoffset:0;}
-  .draw.go .area,.draw.go .pt,.draw.go .callout{opacity:1;}
-  @media (prefers-reduced-motion:reduce){ .draw .model{transition:none; stroke-dashoffset:0;} .draw .area,.draw .pt,.draw .callout{transition:none; opacity:1;} }
+  .draw.go .area,.draw.go .pt,.draw.go .callout,.draw.go .logit{opacity:1;}
+  @media (prefers-reduced-motion:reduce){ .draw .model{transition:none; stroke-dashoffset:0;} .draw .area,.draw .pt,.draw .callout,.draw .logit{transition:none; opacity:1;} }
 
   .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:24px;}
   .band{background:var(--navy); color:var(--white); padding:22px 24px 18px; display:flex; align-items:flex-end; justify-content:space-between; gap:12px; min-height:112px;}
@@ -216,7 +218,7 @@
       <div class="hello-text">
       <h1>Adan Urizar</h1>
       <p class="role">Data &amp; business analyst, Wake Forest MSBA, May 2027</p>
-      <p>I'm an MSBA candidate at Wake Forest with a logistics background, looking for data analyst, business analyst, and consulting roles. I work in Python, SQL, Excel, Tableau, and Power BI, and I've built KPI dashboards, a real-time tracking app, and predictive models. My fraud detection model scored an AUC of 0.844 against the bank's current 0.651 and would cut estimated fraud costs by 31%, and a time study I ran measured a 35% jump in productivity. On campus, I'm a graduate research assistant building an AI chat app for a faculty study, a member of the MSBA Student Engagement Council, and an MSBA Ambassador.</p>
+      <p>I'm an MSBA candidate at Wake Forest with a logistics background, looking for data analyst, business analyst, and consulting roles. I work in Python, SQL, Excel, Tableau, and Power BI, and I've built KPI dashboards, a real-time tracking app, and predictive models. My XGBoost fraud detection model scored an AUC of 0.870 against the bank's current 0.645 and would cut estimated fraud costs by 36%, and a time study I ran measured a 35% jump in productivity. On campus, I'm a graduate research assistant building an AI chat app for a faculty study, a member of the MSBA Student Engagement Council, and an MSBA Ambassador.</p>
       <div class="btns">
         <a class="btn" href="resume.pdf" target="_blank" rel="noopener">View my resume</a>
         <a class="btn line" href="#projects">See my projects</a>
@@ -248,23 +250,24 @@
 
       <article class="card feature">
         <div class="body">
-          <h3>Fraud detection model</h3>
+          <h3>Fraud detection models</h3>
           <div class="where">Machine Learning, Wake Forest MSBA, fall 2026 (team of 5, class case)</div>
-          <p>A bank was getting four times more account applications after launching a $200 sign-up bonus, and fraud grew with them. We built a logistic regression in Python that scores each application the moment it's submitted. I combined my teammates' feature ideas into 55 candidates and narrowed them to 20 using about 212,000 applications.</p>
+          <p>A bank was getting four times more account applications after launching a $200 sign-up bonus, and fraud grew with them. We built models in Python that score each application the moment it's submitted, using about 212,000 applications and 110 features from a 43-table bank database.</p>
+          <p>We started with a logistic regression, then built a random forest and an XGBoost model tuned with Optuna. XGBoost won on every business measure, so it's our final recommendation.</p>
           <div class="facts">
-            <div class="fact"><b>0.844</b><span>AUC, vs. 0.651 for the bank's score</span></div>
-            <div class="fact"><b>48%</b><span>of fraud caught reviewing 7% of apps</span></div>
-            <div class="fact"><b>31%</b><span>lower cost: $1.03M to $0.71M</span></div>
+            <div class="fact"><b>0.870</b><span>AUC, vs. 0.645 for the bank's score</span></div>
+            <div class="fact"><b>54%</b><span>of fraud caught reviewing 6.8% of apps</span></div>
+            <div class="fact"><b>36%</b><span>lower cost: $984K to $625K</span></div>
           </div>
           <div class="links">
-            <a href="projects/fraud-detection/Fraud_Model_Memo.pdf" target="_blank" rel="noopener">Read the memo (PDF)</a>
-            <a href="https://github.com/adanurizar7/Portfolio/blob/main/projects/fraud-detection/Fraud_Detection_Model.ipynb" target="_blank" rel="noopener">View on GitHub</a>
+            <a href="projects/fraud-detection/Fraud_Models_Memo_HW5.pdf" target="_blank" rel="noopener">Read the memo (PDF)</a>
+            <a href="https://github.com/adanurizar7/Portfolio/tree/main/projects/fraud-detection" target="_blank" rel="noopener">View on GitHub</a>
           </div>
         </div>
         <figure class="viz draw" id="gains" style="margin:0">
           <h4>Fraud found by reviewing the riskiest applications</h4>
           <p class="sub">Test set of 52,998 applications</p>
-          <svg viewBox="0 0 520 335" role="img" aria-label="Line chart. Reviewing the riskiest 1 percent of applications finds 9.8 percent of fraud, 5 percent finds 40.6 percent, 10 percent finds 55.9 percent, and 20 percent finds 71.6 percent. The bank's current score finds 6.4 percent at 5 percent.">
+          <svg viewBox="0 0 520 335" role="img" aria-label="Line chart. Reviewing the riskiest 5 percent of applications finds 45.8 percent of fraud with XGBoost, 39.8 percent with the earlier logistic regression, and 6.1 percent with the bank's current score. At 20 percent, XGBoost finds 76.1 percent and logistic regression 70.3 percent.">
             <line class="axis" x1="50" y1="290" x2="500" y2="290"/>
             <line class="axis" x1="50" y1="222.5" x2="500" y2="222.5"/>
             <line class="axis" x1="50" y1="155" x2="500" y2="155"/>
@@ -283,18 +286,19 @@
             <text class="tick" x="275" y="333" text-anchor="middle">Share of applications reviewed, riskiest first</text>
             <line class="base" x1="50" y1="290" x2="500" y2="222.5"/>
             <text class="lab dim" x="496" y="254" text-anchor="end">Reviewing at random</text>
-            <path class="area" d="M50,290 L72.5,256.9 L162.5,153 L275,101.3 L500,48.4 L500,222.5 Z"/>
-            <path class="model" id="modelLine" d="M50,290 L72.5,256.9 L162.5,153 L275,101.3 L500,48.4"/>
-            <circle class="pt" cx="72.5" cy="256.9" r="4.5"/>
-            <circle class="pt" cx="162.5" cy="153" r="5.5"/>
-            <circle class="pt" cx="275" cy="101.3" r="4.5"/>
-            <circle class="pt" cx="500" cy="48.4" r="4.5"/>
+            <path class="area" d="M50,290 L72.5,254.9 L162.5,135.4 L275,78.4 L500,33.2 L500,222.5 Z"/>
+            <path class="logit" d="M50,290 L72.5,256.6 L162.5,155.7 L275,106.1 L500,52.7"/>
+            <path class="model" id="modelLine" d="M50,290 L72.5,254.9 L162.5,135.4 L275,78.4 L500,33.2"/>
+            <circle class="pt" cx="162.5" cy="135.4" r="5.5"/>
+            <circle class="pt" cx="500" cy="33.2" r="4.5"/>
             <g class="callout">
-              <text class="lab" x="176" y="178"><tspan font-weight="700">40.6%</tspan> with our model</text>
-              <circle class="bank" cx="162.5" cy="268.4" r="5"/>
-              <text class="lab dim" x="174" y="272">6.4% with the bank's current score</text>
-              <text class="lab" x="268" y="88" text-anchor="end">55.9%</text>
-              <text class="lab" x="494" y="38" text-anchor="end">71.6%</text>
+              <text class="lab" x="150" y="122" text-anchor="end"><tspan font-weight="700">45.8%</tspan> XGBoost</text>
+              <circle class="logit-pt" cx="162.5" cy="155.7" r="4"/>
+              <text class="lab dim" x="178" y="178">39.8% logistic regression</text>
+              <circle class="bank" cx="162.5" cy="269.4" r="5"/>
+              <text class="lab dim" x="174" y="273">6.1% with the bank's current score</text>
+              <text class="lab" x="494" y="22" text-anchor="end">76.1%</text>
+              <text class="lab dim" x="494" y="84" text-anchor="end">70.3%</text>
             </g>
           </svg>
         </figure>
@@ -401,9 +405,9 @@
     <section id="skills" aria-labelledby="sk-t">
       <h2 class="sec-title" id="sk-t">Skills</h2>
       <p class="sub-h">Programming &amp; data</p>
-      <div class="tags"><span>Python</span><span>pandas</span><span>scikit-learn</span><span>statsmodels</span><span>SQL</span><span>Jupyter</span></div>
+      <div class="tags"><span>Python</span><span>pandas</span><span>scikit-learn</span><span>statsmodels</span><span>Optuna</span><span>SQL</span><span>Jupyter</span></div>
       <p class="sub-h">Analysis &amp; visualization</p>
-      <div class="tags"><span>Excel</span><span>Tableau</span><span>Power BI</span><span>Logistic regression</span><span>Linear regression</span><span>Hypothesis testing</span><span>Feature selection</span></div>
+      <div class="tags"><span>Excel</span><span>Tableau</span><span>Power BI</span><span>XGBoost</span><span>Random forest</span><span>Logistic regression</span><span>Linear regression</span><span>Hypothesis testing</span><span>Feature selection</span></div>
       <p class="sub-h">Tools &amp; platforms</p>
       <div class="tags"><span>Power Apps</span><span>SharePoint</span><span>Qualtrics</span><span>Google Workspace</span></div>
     </section>
