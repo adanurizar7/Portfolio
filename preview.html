@@ -187,6 +187,9 @@
   .chips{display:flex; flex-wrap:wrap; gap:9px;}
   .chips span{border:1px solid var(--line-2); border-radius:999px; padding:6px 15px; font-size:15px; color:var(--ink); background:var(--white);}
   .chips span.hi{border-color:transparent; color:#fff; background:var(--ink);}
+  .chips span{transition:background .2s ease, color .2s ease, border-color .2s ease, transform .2s ease, box-shadow .2s ease; cursor:default;}
+  .chips span:hover{background:var(--gold); border-color:var(--gold); color:#fff; transform:translateY(-3px); box-shadow:0 8px 18px -8px rgba(158,126,56,.6);}
+  @media (prefers-reduced-motion:reduce){ .chips span:hover{transform:none;} }
   .edu{border:1px solid var(--line); border-radius:24px; padding:8px 28px; background:var(--white);}
   .edu div{padding:20px 0; border-bottom:1px solid var(--line);}
   .edu div:last-child{border-bottom:none;}
@@ -245,7 +248,7 @@
     <div>
       <div class="kicker reveal d1"><i></i>Wake Forest MSBA, graduating May 2027</div>
       <h1 class="reveal d2">Adan Urizar</h1>
-      <p class="role reveal d3">Data &amp; business analyst</p>
+      <p class="role reveal d3">Data analytics &amp; consulting</p>
       <p class="intro reveal d3">I'm an MSBA candidate at Wake Forest with a logistics background, looking for data analyst, business analyst, and consulting roles. I work in Python, SQL, Excel, Tableau, and Power BI, and I've built KPI dashboards, a real-time tracking app, and predictive models. My XGBoost fraud detection model scored an AUC of 0.870 against the bank's current 0.645 and would cut estimated fraud costs by 36%, and a time study I ran measured a 35% jump in productivity. On campus, I'm a graduate research assistant building an AI chat app for a faculty study, a member of the MSBA Student Engagement Council, and an MSBA Ambassador.</p>
       <div class="btns reveal d4">
         <a class="btn primary" href="#work">See my work</a>
