@@ -266,9 +266,15 @@
   section.deco{position:relative; overflow:hidden;}
   section.deco > .wrap{position:relative; z-index:1;}
   .sec-bg{position:absolute; inset:0; width:100%; height:100%; pointer-events:none; z-index:0;}
-  .sec-bg .sb-curve{fill:none; stroke:var(--gold); stroke-width:2; opacity:.45; stroke-dasharray:var(--len,2400); stroke-dashoffset:var(--off,2400);}
-  .sec-bg .sb-base{fill:none; stroke:rgba(19,32,54,.12); stroke-width:1.2; stroke-dasharray:6 7;}
-  .sec-bg .sb-fill{fill:rgba(158,126,56,.022);}
+  .bg-scatter{inset:0 0 auto 0; height:620px;}
+  .bg-scatter .n{fill:rgba(19,32,54,.10);} .bg-scatter .g{fill:rgba(184,149,74,.55);}
+  .bg-scatter .drift{transform:translateY(var(--dy,0px)); transition:transform .2s linear;}
+  .bg-rings .ring{fill:none; stroke:rgba(19,32,54,.06); stroke-width:1.2;}
+  .bg-rings .ring-gold{fill:none; stroke:rgba(184,149,74,.35); stroke-width:1.6; stroke-dasharray:4 14; transform-origin:1440px 900px; animation:ringspin 80s linear infinite;}
+  .bg-rings .ring-gold.slow{stroke:rgba(184,149,74,.22); animation-duration:140s; animation-direction:reverse;}
+  @keyframes ringspin{to{transform:rotate(360deg);}}
+  .bg-bars .n{fill:rgba(19,32,54,.035);} .bg-bars .g{fill:rgba(184,149,74,.14);}
+  .bg-bars .grow{transform-origin:50% 100%; transform:scaleY(var(--sy,.15)); transition:transform .15s linear;}
   /* experience: gold rail that fills as you read down */
   .exp{position:relative;}
   .exp-rail{position:absolute; left:-26px; top:0; bottom:0; width:2px; background:var(--line); border-radius:2px;}
@@ -276,7 +282,7 @@
   .exp-rail i::after{content:""; position:absolute; left:50%; bottom:-5px; width:10px; height:10px; margin-left:-5px; border-radius:50%; background:#D4AF5A; box-shadow:0 0 10px 3px rgba(212,175,90,.6);}
   @media (max-width:1100px){ .exp-rail{left:-16px;} }
   @media (max-width:760px){ .exp-rail{display:none;} }
-  @media (prefers-reduced-motion:reduce){ .sec-bg .sb-curve{stroke-dashoffset:0;} .exp-rail i{height:100%;} }
+  @media (prefers-reduced-motion:reduce){ .bg-rings .ring-gold{animation:none;} .bg-bars .grow{transform:none;} .bg-scatter .drift{transform:none;} .exp-rail i{height:100%;} }
 </style>
 </head>
 <body>
@@ -337,11 +343,7 @@
 
 <main>
 <section id="work" class="deco" aria-labelledby="work-t">
-  <svg class="sec-bg" viewBox="0 0 1440 900" preserveAspectRatio="none" aria-hidden="true">
-    <path class="sb-fill" d="M0,860 C420,840 760,760 1040,640 C1220,560 1350,520 1440,500 L1440,900 L0,900 Z"/>
-    <path class="sb-base" d="M0,880 L1440,800"/>
-    <path class="sb-curve" d="M0,860 C420,840 760,760 1040,640 C1220,560 1350,520 1440,500"/>
-  </svg>
+  <svg class="sec-bg bg-scatter" viewBox="0 0 1440 900" preserveAspectRatio="xMaxYMin slice" aria-hidden="true"><g class="drift"><circle cx="1014" cy="112" r="3" class="g"/><circle cx="1142" cy="216" r="2" class="n"/><circle cx="1071" cy="156" r="4.5" class="g"/><circle cx="1159" cy="495" r="2" class="n"/><circle cx="1058" cy="509" r="2" class="n"/><circle cx="900" cy="241" r="2" class="n"/><circle cx="1156" cy="367" r="2" class="n"/><circle cx="1203" cy="219" r="2" class="n"/><circle cx="1191" cy="278" r="3.5" class="n"/><circle cx="1099" cy="483" r="3" class="n"/><circle cx="1297" cy="376" r="3.5" class="g"/><circle cx="1000" cy="278" r="3" class="n"/><circle cx="891" cy="241" r="4" class="g"/><circle cx="1113" cy="59" r="2" class="n"/><circle cx="1164" cy="460" r="3" class="n"/><circle cx="1030" cy="278" r="4.5" class="g"/><circle cx="876" cy="170" r="3" class="g"/><circle cx="1241" cy="351" r="3.5" class="n"/><circle cx="1051" cy="361" r="2" class="n"/><circle cx="1033" cy="333" r="4.5" class="g"/><circle cx="1281" cy="102" r="2.5" class="n"/><circle cx="1370" cy="278" r="2.5" class="n"/><circle cx="1150" cy="464" r="3.5" class="n"/><circle cx="987" cy="239" r="3" class="n"/><circle cx="1048" cy="151" r="2" class="n"/><circle cx="959" cy="152" r="3.5" class="n"/><circle cx="929" cy="175" r="2.5" class="n"/><circle cx="1042" cy="312" r="2.5" class="n"/><circle cx="1129" cy="336" r="2" class="n"/><circle cx="1228" cy="308" r="3.5" class="n"/><circle cx="882" cy="344" r="2" class="n"/><circle cx="1411" cy="252" r="2" class="n"/><circle cx="1038" cy="52" r="2.5" class="n"/><circle cx="909" cy="161" r="3" class="n"/><circle cx="1104" cy="95" r="3.5" class="n"/><circle cx="1100" cy="272" r="3" class="g"/><circle cx="1270" cy="395" r="3.5" class="n"/><circle cx="1391" cy="294" r="2.5" class="n"/><circle cx="1368" cy="404" r="3" class="n"/><circle cx="1338" cy="374" r="3" class="n"/><circle cx="1365" cy="211" r="2.5" class="n"/><circle cx="1287" cy="198" r="2.5" class="n"/><circle cx="1293" cy="404" r="2.5" class="n"/><circle cx="1311" cy="395" r="2.5" class="n"/><circle cx="1116" cy="391" r="2" class="n"/><circle cx="1103" cy="133" r="3" class="n"/><circle cx="1393" cy="215" r="3.5" class="g"/><circle cx="1102" cy="202" r="3.5" class="n"/><circle cx="1108" cy="353" r="2" class="n"/><circle cx="892" cy="226" r="2.5" class="n"/><circle cx="927" cy="419" r="4" class="g"/><circle cx="1388" cy="386" r="3.5" class="n"/><circle cx="922" cy="101" r="2.5" class="n"/><circle cx="1099" cy="355" r="3.5" class="n"/><circle cx="1030" cy="303" r="3.5" class="g"/><circle cx="1300" cy="389" r="2" class="n"/><circle cx="1380" cy="248" r="2.5" class="n"/><circle cx="947" cy="161" r="3" class="n"/><circle cx="1278" cy="196" r="3.5" class="n"/><circle cx="1359" cy="358" r="3.5" class="n"/></g></svg>
   <div class="wrap">
     <div class="sec-head">
       <h2 id="work-t">Selected work</h2>
@@ -440,11 +442,7 @@
 </section>
 
 <section id="experience" class="deco" aria-labelledby="exp-t">
-  <svg class="sec-bg" viewBox="0 0 1440 900" preserveAspectRatio="none" aria-hidden="true">
-    <path class="sb-fill" d="M0,880 C420,866 800,820 1080,740 C1250,690 1370,660 1440,640 L1440,900 L0,900 Z"/>
-    <path class="sb-base" d="M0,890 L1440,840"/>
-    <path class="sb-curve" d="M0,880 C420,866 800,820 1080,740 C1250,690 1370,660 1440,640"/>
-  </svg>
+  <svg class="sec-bg bg-rings" viewBox="0 0 1440 900" preserveAspectRatio="xMaxYMax slice" aria-hidden="true"><circle cx="1440" cy="900" r="160" class="ring"/><circle cx="1440" cy="900" r="270" class="ring"/><circle cx="1440" cy="900" r="380" class="ring"/><circle cx="1440" cy="900" r="490" class="ring"/><circle cx="1440" cy="900" r="600" class="ring"/><circle cx="1440" cy="900" r="710" class="ring"/><circle cx="1440" cy="900" r="490" class="ring-gold"/><circle cx="1440" cy="900" r="710" class="ring-gold slow"/></svg>
   <div class="wrap">
     <div class="sec-head">
       <h2 id="exp-t">Experience</h2>
@@ -498,11 +496,7 @@
 </section>
 
 <section id="skills" class="deco" aria-labelledby="sk-t">
-  <svg class="sec-bg" viewBox="0 0 1440 900" preserveAspectRatio="none" aria-hidden="true">
-    <path class="sb-fill" d="M0,880 C360,860 700,800 980,700 C1180,630 1330,590 1440,570 L1440,900 L0,900 Z"/>
-    <path class="sb-base" d="M0,890 L1440,830"/>
-    <path class="sb-curve" d="M0,880 C360,860 700,800 980,700 C1180,630 1330,590 1440,570"/>
-  </svg>
+  <svg class="sec-bg bg-bars" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><g class="grow"><rect x="20" y="840" width="34" height="60" rx="5" class="n"/><rect x="80" y="810" width="34" height="90" rx="5" class="n"/><rect x="140" y="825" width="34" height="75" rx="5" class="n"/><rect x="200" y="780" width="34" height="120" rx="5" class="n"/><rect x="260" y="800" width="34" height="100" rx="5" class="n"/><rect x="320" y="750" width="34" height="150" rx="5" class="n"/><rect x="380" y="770" width="34" height="130" rx="5" class="n"/><rect x="440" y="720" width="34" height="180" rx="5" class="n"/><rect x="500" y="740" width="34" height="160" rx="5" class="n"/><rect x="560" y="690" width="34" height="210" rx="5" class="g"/><rect x="620" y="710" width="34" height="190" rx="5" class="n"/><rect x="680" y="660" width="34" height="240" rx="5" class="n"/><rect x="740" y="680" width="34" height="220" rx="5" class="n"/><rect x="800" y="640" width="34" height="260" rx="5" class="n"/><rect x="860" y="650" width="34" height="250" rx="5" class="n"/><rect x="920" y="610" width="34" height="290" rx="5" class="g"/><rect x="980" y="630" width="34" height="270" rx="5" class="n"/><rect x="1040" y="590" width="34" height="310" rx="5" class="n"/><rect x="1100" y="600" width="34" height="300" rx="5" class="n"/><rect x="1160" y="570" width="34" height="330" rx="5" class="n"/><rect x="1220" y="580" width="34" height="320" rx="5" class="n"/><rect x="1280" y="550" width="34" height="350" rx="5" class="g"/><rect x="1340" y="560" width="34" height="340" rx="5" class="n"/><rect x="1400" y="530" width="34" height="370" rx="5" class="n"/></g></svg>
   <div class="wrap">
     <div class="sec-head">
       <h2 id="sk-t">Skills &amp; education</h2>
@@ -656,17 +650,12 @@
   // background curves draw with scroll; experience rail fills with scroll
   (function(){
     var red=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    var curves=[].slice.call(document.querySelectorAll('.sec-bg .sb-curve'));
-    curves.forEach(function(c){ var L=Math.ceil(c.getTotalLength()); c.style.setProperty('--len',L); c.style.setProperty('--off',red?0:L); });
+    var drift=document.querySelector('.bg-scatter .drift'), grow=document.querySelector('.bg-bars .grow');
     var rail=document.querySelector('.exp-rail i'), exp=document.querySelector('.exp');
     var tick=function(){
       var vh=window.innerHeight;
-      curves.forEach(function(c){
-        var sec=c.closest('section'), r=sec.getBoundingClientRect();
-        var t=Math.min(Math.max((vh - r.top)/(r.height + vh*0.4),0),1);
-        var L=parseFloat(c.style.getPropertyValue('--len'));
-        if(!red) c.style.setProperty('--off', (L*(1-t)).toFixed(1));
-      });
+      if(!red && drift){ var w=document.getElementById('work').getBoundingClientRect(); drift.style.setProperty('--dy', (-(vh - w.top)*0.06).toFixed(1)+'px'); }
+      if(!red && grow){ var k=document.getElementById('skills').getBoundingClientRect(); var t=Math.min(Math.max((vh - k.top)/(k.height*0.9),0),1); grow.style.setProperty('--sy', (0.15+0.85*t).toFixed(3)); }
       if(rail && exp && !red){
         var e=exp.getBoundingClientRect();
         var f=Math.min(Math.max((vh*0.6 - e.top)/e.height,0),1);
