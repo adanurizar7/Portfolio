@@ -213,6 +213,31 @@
   .end .copied{color:#E2C27C;}
   footer{background:var(--navy); border-top:1px solid rgba(255,255,255,.08); padding:26px 0 36px; color:#8E99AB; font-size:14.5px;}
   footer .wrap{display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;}
+
+  /* interactive chart */
+  .viz .hit{cursor:crosshair;}
+  .viz .hover{opacity:0; transition:opacity .25s ease;}
+  .viz.go .hover{opacity:1; transition-delay:1.6s;}
+  .viz .hline{stroke:var(--ink); stroke-width:1; stroke-dasharray:3 4; opacity:.35;}
+  .viz .hdot-x{fill:var(--gold); stroke:#fff; stroke-width:3; filter:drop-shadow(0 3px 6px rgba(158,126,56,.5));}
+  .viz .hdot-l{fill:#8A93A3; stroke:#fff; stroke-width:2.5;}
+  .viz .hline,.viz .hdot-x,.viz .hdot-l{transition:all .35s cubic-bezier(.3,.7,.2,1);}
+  .readout{margin-top:22px; padding-top:20px; border-top:1px solid var(--line);}
+  .pick{display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin-bottom:18px;}
+  .pick-label{font-size:14.5px; color:var(--muted); margin-right:4px;}
+  .pick button{font:600 14.5px var(--sans); color:var(--ink); background:#fff; border:1px solid var(--line-2); border-radius:999px; padding:6px 14px; cursor:pointer; transition:background .2s, color .2s, border-color .2s, transform .2s;}
+  .pick button:hover{border-color:var(--gold); color:var(--gold); transform:translateY(-2px);}
+  .pick button[aria-pressed="true"]{background:var(--gold); border-color:var(--gold); color:#fff;}
+  .nums{display:grid; grid-template-columns:repeat(3,1fr); gap:12px;}
+  .nums .n{background:#fff; border:1px solid var(--line); border-radius:14px; padding:14px 14px 12px;}
+  .nums .n.gold{background:var(--gold-soft); border-color:transparent;}
+  .nums b{display:block; font-family:var(--display); font-size:28px; color:var(--ink); line-height:1.05; font-variation-settings:'wdth' 110; transition:opacity .2s;}
+  .nums .n.gold b{color:var(--gold);}
+  .nums span{display:block; font-size:13.5px; color:var(--muted); margin-top:4px; line-height:1.35;}
+  .hint{font-size:13.5px; color:var(--muted); margin:14px 0 0;}
+  @media (max-width:520px){ .nums{grid-template-columns:1fr;} }
+  @media (hover:none){ .hint{display:none;} }
+  @media (prefers-reduced-motion:reduce){ .viz .hline,.viz .hdot-x,.viz .hdot-l,.pick button{transition:none;} }
 </style>
 </head>
 <body>
@@ -338,7 +363,28 @@
             <text class="lab" x="494" y="22" text-anchor="end">76.1%</text>
             <text class="lab dim" x="494" y="84" text-anchor="end">70.3%</text>
           </g>
+          <g class="hover" aria-hidden="true">
+            <line class="hline" x1="162.5" y1="20" x2="162.5" y2="290"/>
+            <circle class="hdot-x" cx="162.5" cy="135.4" r="7"/>
+            <circle class="hdot-l" cx="162.5" cy="155.7" r="5.5"/>
+          </g>
+          <rect class="hit" x="40" y="10" width="470" height="290" fill="transparent"/>
         </svg>
+        <div class="readout" aria-live="polite">
+          <div class="pick" role="group" aria-label="Choose how many applications to review">
+            <span class="pick-label">Review the riskiest</span>
+            <button type="button" data-i="0">1%</button>
+            <button type="button" data-i="1" aria-pressed="true">5%</button>
+            <button type="button" data-i="2">10%</button>
+            <button type="button" data-i="3">20%</button>
+          </div>
+          <div class="nums">
+            <div class="n gold"><b id="r-x">45.8%</b><span>of fraud found with XGBoost</span></div>
+            <div class="n"><b id="r-l">39.8%</b><span>with logistic regression</span></div>
+            <div class="n"><b id="r-r">5%</b><span>if reviewed at random</span></div>
+          </div>
+          <p class="hint">Move your mouse across the chart or pick a percentage.</p>
+        </div>
       </figure>
     </article>
 
@@ -511,6 +557,35 @@
     },{rootMargin:'-45% 0px -50% 0px'});
     ['work','experience','skills'].forEach(function(id){ var el=document.getElementById(id); if(el) spy.observe(el); });
   }
+
+  // interactive chart: snap to the real data points
+  (function(){
+    var fig=document.getElementById('gains'); if(!fig) return;
+    var pts=[{p:1,x:72.5,xg:10.4,lg:9.9},{p:5,x:162.5,xg:45.8,lg:39.8},{p:10,x:275,xg:62.7,lg:54.5},{p:20,x:500,xg:76.1,lg:70.3}];
+    var Y=function(v){ return 290-3.375*v; };
+    var hl=fig.querySelector('.hline'), dx=fig.querySelector('.hdot-x'), dl=fig.querySelector('.hdot-l');
+    var rx=document.getElementById('r-x'), rl=document.getElementById('r-l'), rr=document.getElementById('r-r');
+    var btns=[].slice.call(fig.querySelectorAll('.pick button'));
+    var cur=1;
+    var show=function(i){
+      cur=i; var d=pts[i];
+      hl.setAttribute('x1',d.x); hl.setAttribute('x2',d.x);
+      dx.setAttribute('cx',d.x); dx.setAttribute('cy',Y(d.xg));
+      dl.setAttribute('cx',d.x); dl.setAttribute('cy',Y(d.lg));
+      rx.textContent=d.xg.toFixed(1)+'%'; rl.textContent=d.lg.toFixed(1)+'%'; rr.textContent=d.p+'%';
+      btns.forEach(function(b,k){ b.setAttribute('aria-pressed', k===i ? 'true':'false'); });
+    };
+    btns.forEach(function(b,k){ b.addEventListener('click', function(){ show(k); }); });
+    var svg=fig.querySelector('svg'), hit=fig.querySelector('.hit');
+    var move=function(e){
+      var r=svg.getBoundingClientRect(); var vx=(e.clientX-r.left)/r.width*520;
+      var best=0, bd=1e9; pts.forEach(function(d,k){ var dd=Math.abs(d.x-vx); if(dd<bd){bd=dd; best=k;} });
+      if(best!==cur) show(best);
+    };
+    hit.addEventListener('pointermove', move);
+    hit.addEventListener('pointerdown', move);
+    show(1);
+  })();
 
   // chart draw on scroll
   var fig=document.getElementById('gains'), line=document.getElementById('modelLine');
