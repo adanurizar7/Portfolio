@@ -273,8 +273,13 @@
   .bg-rings .ring-gold{fill:none; stroke:rgba(184,149,74,.35); stroke-width:1.6; stroke-dasharray:4 14; transform-origin:1440px 900px; animation:ringspin 80s linear infinite;}
   .bg-rings .ring-gold.slow{stroke:rgba(184,149,74,.22); animation-duration:140s; animation-direction:reverse;}
   @keyframes ringspin{to{transform:rotate(360deg);}}
-  .bg-bars .n{fill:rgba(19,32,54,.035);} .bg-bars .g{fill:rgba(184,149,74,.14);}
-  .bg-bars .grow{transform-origin:50% 100%; transform:scaleY(var(--sy,.15)); transition:transform .15s linear;}
+  .bg-dots{background:
+      radial-gradient(520px 360px at 8% 12%, rgba(212,175,90,.10), transparent 70%);
+    }
+  .bg-dots::after{content:""; position:absolute; right:40px; bottom:40px; width:330px; height:220px;
+    background-image:radial-gradient(rgba(158,126,56,.38) 1.4px, transparent 1.6px); background-size:22px 22px;
+    -webkit-mask-image:radial-gradient(ellipse at 100% 100%, #000 20%, transparent 75%); mask-image:radial-gradient(ellipse at 100% 100%, #000 20%, transparent 75%);}
+  @media (max-width:760px){ .bg-dots::after{width:200px; height:140px; right:12px; bottom:20px;} }
   /* experience: gold rail that fills as you read down */
   .exp{position:relative;}
   .exp-rail{position:absolute; left:-26px; top:0; bottom:0; width:2px; background:var(--line); border-radius:2px;}
@@ -282,7 +287,7 @@
   .exp-rail i::after{content:""; position:absolute; left:50%; bottom:-5px; width:10px; height:10px; margin-left:-5px; border-radius:50%; background:#D4AF5A; box-shadow:0 0 10px 3px rgba(212,175,90,.6);}
   @media (max-width:1100px){ .exp-rail{left:-16px;} }
   @media (max-width:760px){ .exp-rail{display:none;} }
-  @media (prefers-reduced-motion:reduce){ .bg-rings .ring-gold{animation:none;} .bg-bars .grow{transform:none;} .bg-scatter .drift{transform:none;} .exp-rail i{height:100%;} }
+  @media (prefers-reduced-motion:reduce){ .bg-rings .ring-gold{animation:none;} .bg-scatter .drift{transform:none;} .exp-rail i{height:100%;} }
 </style>
 </head>
 <body>
@@ -496,7 +501,7 @@
 </section>
 
 <section id="skills" class="deco" aria-labelledby="sk-t">
-  <svg class="sec-bg bg-bars" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><g class="grow"><rect x="20" y="840" width="34" height="60" rx="5" class="n"/><rect x="80" y="810" width="34" height="90" rx="5" class="n"/><rect x="140" y="825" width="34" height="75" rx="5" class="n"/><rect x="200" y="780" width="34" height="120" rx="5" class="n"/><rect x="260" y="800" width="34" height="100" rx="5" class="n"/><rect x="320" y="750" width="34" height="150" rx="5" class="n"/><rect x="380" y="770" width="34" height="130" rx="5" class="n"/><rect x="440" y="720" width="34" height="180" rx="5" class="n"/><rect x="500" y="740" width="34" height="160" rx="5" class="n"/><rect x="560" y="690" width="34" height="210" rx="5" class="g"/><rect x="620" y="710" width="34" height="190" rx="5" class="n"/><rect x="680" y="660" width="34" height="240" rx="5" class="n"/><rect x="740" y="680" width="34" height="220" rx="5" class="n"/><rect x="800" y="640" width="34" height="260" rx="5" class="n"/><rect x="860" y="650" width="34" height="250" rx="5" class="n"/><rect x="920" y="610" width="34" height="290" rx="5" class="g"/><rect x="980" y="630" width="34" height="270" rx="5" class="n"/><rect x="1040" y="590" width="34" height="310" rx="5" class="n"/><rect x="1100" y="600" width="34" height="300" rx="5" class="n"/><rect x="1160" y="570" width="34" height="330" rx="5" class="n"/><rect x="1220" y="580" width="34" height="320" rx="5" class="n"/><rect x="1280" y="550" width="34" height="350" rx="5" class="g"/><rect x="1340" y="560" width="34" height="340" rx="5" class="n"/><rect x="1400" y="530" width="34" height="370" rx="5" class="n"/></g></svg>
+  <div class="sec-bg bg-dots" aria-hidden="true"></div>
   <div class="wrap">
     <div class="sec-head">
       <h2 id="sk-t">Skills &amp; education</h2>
@@ -650,12 +655,11 @@
   // background curves draw with scroll; experience rail fills with scroll
   (function(){
     var red=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    var drift=document.querySelector('.bg-scatter .drift'), grow=document.querySelector('.bg-bars .grow');
+    var drift=document.querySelector('.bg-scatter .drift');
     var rail=document.querySelector('.exp-rail i'), exp=document.querySelector('.exp');
     var tick=function(){
       var vh=window.innerHeight;
       if(!red && drift){ var w=document.getElementById('work').getBoundingClientRect(); drift.style.setProperty('--dy', (-(vh - w.top)*0.06).toFixed(1)+'px'); }
-      if(!red && grow){ var k=document.getElementById('skills').getBoundingClientRect(); var t=Math.min(Math.max((vh - k.top)/(k.height*0.9),0),1); grow.style.setProperty('--sy', (0.15+0.85*t).toFixed(3)); }
       if(rail && exp && !red){
         var e=exp.getBoundingClientRect();
         var f=Math.min(Math.max((vh*0.6 - e.top)/e.height,0),1);
