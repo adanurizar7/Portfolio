@@ -66,7 +66,10 @@
   .hero-bg .fill{fill:url(#heroFill);}
   .hero .wrap{position:relative; display:grid; grid-template-columns:1.35fr .85fr; gap:64px; align-items:center; width:100%;}
   .kicker{color:var(--gold); font-weight:600; font-size:16px; margin-bottom:18px; display:flex; align-items:center; gap:10px;}
-  .kicker i{width:8px; height:8px; border-radius:50%; background:var(--gold); box-shadow:0 0 0 5px rgba(158,126,56,.16); display:inline-block;}
+  .kicker i{position:relative; width:9px; height:9px; border-radius:50%; background:var(--gold); display:inline-block; box-shadow:0 0 6px 1px rgba(201,168,95,.75);}
+  .kicker i::after{content:""; position:absolute; inset:0; border-radius:50%; background:var(--gold); animation:livepulse 2s ease-out infinite;}
+  @keyframes livepulse{0%{transform:scale(1); opacity:.6;} 80%,100%{transform:scale(3.2); opacity:0;}}
+  @media (prefers-reduced-motion:reduce){ .kicker i::after{animation:none; opacity:0;} }
   .hero h1{font-size:clamp(52px,8.6vw,112px); font-weight:800; font-variation-settings:'wdth' 122; letter-spacing:-.035em; line-height:.92; margin-bottom:22px;}
   .hero .role{font-family:var(--display); font-size:clamp(20px,2.2vw,26px); color:var(--ink); font-weight:500; margin-bottom:18px; font-variation-settings:'wdth' 105;}
   .hero .intro{color:var(--muted); max-width:62ch;}
